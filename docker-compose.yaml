@@ -1,0 +1,14 @@
+services:
+  react-js-app:
+    build:
+      dockerfile: ./docker/react-js-app/Dockerfile
+    container_name: react-js
+    command: yarn dev
+    ports: 
+      - 8080:8080
+    volumes:
+      # Exclude container directory overwritten by host.
+      - /react-js-app/node_modules
+      # Then, mount host volume.
+      - ./react-js-app:/react-js-app
+      

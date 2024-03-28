@@ -1,1 +1,25 @@
+#  Set Node.js version 18
+FROM node:20-alpine
+
+# Update os
+RUN echo "Installing system dependencies" && \
+    apk update && \
+    apk add bash make && \
+    echo "Clean up .." && \
+    rm -rf /var/cache/apks/*
+
+# Set ENV
+ENV ROOT /react-js-app
+
+# Set workdir
+WORKDIR ${ROOT}
+
+COPY react-js-app/Makefile ./
+
+
+# Install dependencies
+#   Run make install in Makefile in folder /react-js-app
+RUN make install
+
+
 
