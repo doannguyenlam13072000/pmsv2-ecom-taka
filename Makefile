@@ -18,25 +18,25 @@ build:
 
 # Build one image specified
 build-one:
-	@if not defined tag ( \
-		@echo $(ERROR_MESSAGE) \
-	) else ( \
-		$(COMPOSE) build $(tag) \
-	)
+	@if [ -z "$(tag)" ]; then \
+		echo $(ERROR_MESSAGE); \
+	else \
+		$(COMPOSE) build $(tag); \
+	fi
 
 stop-one:
-	@if not defined tag ( \
-		@echo $(ERROR_MESSAGE) \
-	) else ( \
-		$(COMPOSE) stop $(tag) \
-	)
+	@if [ -z "$(tag)" ]; then \
+		echo $(ERROR_MESSAGE); \
+	else \
+		$(COMPOSE) stop $(tag); \
+	fi
 
 exec:
-	@if not defined tag ( \
-		@echo $(ERROR_MESSAGE) \
-	) else ( \
-		 $(COMPOSE) exec -it $(tag) /bin/bash \
-	)
+	@if [ -z "$(tag)" ]; then \
+		echo $(ERROR_MESSAGE); \
+	else \
+		$(COMPOSE) exec -it $(tag) /bin/bash; \
+	fi
 	
 # Kill all containers
 down:

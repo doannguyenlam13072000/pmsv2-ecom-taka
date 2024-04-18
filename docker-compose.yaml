@@ -1,23 +1,9 @@
 services:
-  postgres:
-    image: postgres:13-alpine
-    restart: always
-    container_name: postgres
-    command: postgres -c max_connections=200
-    environment:
-      ENV: ${ENV:-develop}
-      POSTGRES_PASSWORD: password
-    ports:
-      - 5432:5432
-    volumes:
-      - ./dbdata/postgresql/data:/var/lib/postgresql/data
-      - ./dbdata/postgresql/init:/docker-entrypoint-initdb.d
-
   react-app:
     build:
       dockerfile: ./docker/react-app/Dockerfile
     container_name: react-app
-    command: yarn dev
+    command: make run
     ports:
       - 8080:8080
     volumes:
