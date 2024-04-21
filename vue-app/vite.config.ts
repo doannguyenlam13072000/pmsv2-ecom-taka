@@ -36,6 +36,9 @@ export default defineConfig({
   },
   server: {
     port: 8081,
-    host: true
+    host: true,
+    watch: {
+      usePolling: true
+    }
   }
 })

@@ -1,30 +1,33 @@
 <script setup lang="ts">
-import { RouterLink, RouterView } from 'vue-router'
-import { useDark, useToggle } from '@vueuse/core'
+import { RouterView, useRoute } from 'vue-router'
+import { computed } from 'vue'
+import { LAYOUT } from '@/constants/layout'
 
-const isDark = useDark()
-const toggleDark = useToggle(isDark)
+const route = useRoute()
+
+const layout = computed<string>(() => {
+  return (route.meta.layout || LAYOUT.PUBLIC) + '-layout'
+})
 </script>
 
 <template>
-  <header>
-    <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
-
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
-      <button @click="toggleDark()">Click</button>
-
-      <nav>
-        <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/about">About</RouterLink>
-      </nav>
-    </div>
-  </header>
-
-  <RouterView />
+  <div id="app">
+    <component :is="layout">
+      <RouterView />
+    </component>
+  </div>
 </template>
 
-<style scoped>
+<style scoped lang="scss">
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}
 header {
   line-height: 1.5;
   max-height: 100vh;
