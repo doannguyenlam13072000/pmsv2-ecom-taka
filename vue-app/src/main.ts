@@ -12,10 +12,16 @@ import 'element-plus/dist/index.css'
 import 'element-plus/theme-chalk/dark/css-vars.css'
 import '@/styles/index.scss'
 
+// Tailwind
+import './index.css'
+
 import App from './App.vue'
 import router from './router'
+import { registerGlobalComponent } from './utils/import'
 
 const app = createApp(App)
+
+registerGlobalComponent(app);
 
 app.use(createPinia())
 app.use(router)
