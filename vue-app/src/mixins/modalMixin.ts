@@ -1,15 +1,23 @@
+import { mockAPI } from '@/utils/mockAPI'
+interface ModalMixin {
+  a: string
+  // Declare other properties and methods of the mixin if needed
+}
 export const modalMixin = {
   data() {
     return {
-      a: 'a'
+      a: '' as string
     }
   },
   methods: {},
   beforeCreate() {
     console.log('Mixin beforeCreate')
   },
-  created() {
+  async created(this: ModalMixin) {
     console.log('Mixin created')
+    const res = await mockAPI(3000, 'string')
+    console.log('Mixin created response', res, this)
+    this.a = res as string
   },
   beforeMount() {
     console.log('Mixin beforeMount')
