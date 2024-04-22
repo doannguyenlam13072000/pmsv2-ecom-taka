@@ -1,5 +1,5 @@
 <template>
-  <div class="common-layout">
+  <div class="common-layout w-full">
     <el-container>
       <el-main>
         <slot />
