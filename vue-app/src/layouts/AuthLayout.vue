@@ -1,15 +1,14 @@
 <template>
-  <div class="common-layout">
+  <div class="auth-layout w-full">
     <el-container>
       <el-header>
         <NavBar />
       </el-header>
 
-      <el-main>
+      <el-main class="h-screen">
         <slot />
       </el-main>
-      
-      <el-footer>Footer</el-footer>
+
     </el-container>
   </div>
 </template>

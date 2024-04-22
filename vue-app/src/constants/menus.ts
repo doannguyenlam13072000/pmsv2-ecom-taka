@@ -3,41 +3,41 @@ export const menus = [
     title: 'Home',
     path: '/',
     meta: {},
-    sub: []
+    subs: []
   },
   {
     title: 'Sub menu',
     path: '/sub',
     meta: {},
-    sub: [
+    subs: [
       {
         title: 'Sub menu 1',
         path: '/sub-1',
         meta: {},
-        sub: []
+        subs: []
       },
       {
         title: 'Sub menu 2',
         path: '/sub-2',
         meta: {},
-        sub: [
+        subs: [
           {
             title: 'Sub menu 2-1',
             path: '/sub-2-1',
             meta: {},
-            sub: []
+            subs: []
           },
           {
             title: 'Sub menu 2-2',
             path: '/sub-2-2',
             meta: {},
-            sub: []
+            subs: []
           },
           {
             title: 'Sub menu 2-3',
             path: '/sub-2-3',
             meta: {},
-            sub: []
+            subs: []
           }
         ]
       },
@@ -45,13 +45,13 @@ export const menus = [
         title: 'Sub menu 3',
         path: '/sub-3',
         meta: {},
-        sub: []
+        subs: []
       },
       {
         title: 'Sub menu 4',
         path: '/sub-4',
         meta: {},
-        sub: []
+        subs: []
       }
     ]
   },
@@ -59,6 +59,6 @@ export const menus = [
     title: 'About',
     path: '/about',
     meta: {},
-    sub: []
+    subs: []
   }
 ]
