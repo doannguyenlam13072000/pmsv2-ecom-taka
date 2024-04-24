@@ -15,13 +15,17 @@ import '@/styles/index.scss'
 // Tailwind
 import './index.css'
 
+// Directive
+import { registerGolbalDirective } from '@/directives'
+
 import App from './App.vue'
 import router from './router'
 import { registerGlobalComponent } from './utils/import'
 
 const app = createApp(App)
 
-registerGlobalComponent(app);
+registerGlobalComponent(app)
+registerGolbalDirective(app)
 
 app.use(createPinia())
 app.use(router)

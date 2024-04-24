@@ -1,9 +1,9 @@
 import { mockAPI } from '@/utils/mockAPI'
-interface ModalMixin {
+interface DemoMixin {
   a: string
   // Declare other properties and methods of the mixin if needed
 }
-export const modalMixin = {
+export const demoMixin = {
   data() {
     return {
       a: '' as string
@@ -13,7 +13,7 @@ export const modalMixin = {
   beforeCreate() {
     console.log('Mixin beforeCreate')
   },
-  async created(this: ModalMixin) {
+  async created(this: DemoMixin) {
     console.log('Mixin created')
     const res = await mockAPI(3000, 'string')
     console.log('Mixin created response', res, this)

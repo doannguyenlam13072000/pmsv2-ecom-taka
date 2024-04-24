@@ -1,9 +1,20 @@
 <script>
-import { modalMixin } from '@/mixins/modalMixin'
+import { demoMixin } from '@/mixins/DemoMixin'
 export default {
-  data() {},
+  data() {
+    return {
+      color: '#fff'
+    }
+  },
   methods: {},
-  mixins: [modalMixin],
+  mixins: [demoMixin],
+  directives: {
+    'local': {
+      created(el, binding) {
+        el.textContent += binding.value
+      }
+    }
+  },
   beforeCreate() {
     console.log('beforeCreate')
   },
@@ -43,6 +54,11 @@ export default {
   <div class="about">
     <h1 class="text-green-500">This is an Home page</h1>
     <p>Mixin: {{ a }}</p>
+    <p v-highlight>Directive highlight</p>
+    <p v-custom="color">Custom directive passing color: {{ color }}</p>
+    <p v-custom:background="color">Custom directive arg color: {{ color }}</p>
+    <p v-custom.delay="color">Custom directive modifiers delay: </p>
+    <p v-local="'Local directive'">This is </p>
   </div>
 </template>
 
