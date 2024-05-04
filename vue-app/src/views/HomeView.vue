@@ -1,5 +1,6 @@
-<script>
+<script lang="ts">
 import { demoMixin } from '@/mixins/DemoMixin'
+
 export default {
   data() {
     return {
@@ -9,7 +10,7 @@ export default {
   methods: {},
   mixins: [demoMixin],
   directives: {
-    'local': {
+    local: {
       created(el, binding) {
         el.textContent += binding.value
       }
@@ -51,23 +52,13 @@ export default {
 }
 </script>
 <template>
-  <div class="about">
+  <div class="home">
     <h1 class="text-green-500">This is an Home page</h1>
-    <p>Mixin: {{ a }}</p>
-    <p v-highlight>Directive highlight</p>
-    <p v-custom="color">Custom directive passing color: {{ color }}</p>
-    <p v-custom:background="color">Custom directive arg color: {{ color }}</p>
-    <p v-custom.delay="color">Custom directive modifiers delay: </p>
-    <p v-local="'Local directive'">This is </p>
+    <div>Mixin: {{ a }}</div>
+    <div v-highlight>Directive highlight</div>
+    <div v-custom="color">Custom directive passing color: {{ color }}</div>
+    <div v-custom:background="color">Custom directive arg color: {{ color }}</div>
+    <div v-custom.delay="color">Custom directive modifiers delay:</div>
+    <div v-local="'Local directive'">This is</div>
   </div>
 </template>
-
-<style>
-@media (min-width: 1024px) {
-  .about {
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-  }
-}
-</style>

@@ -1,4 +1,5 @@
 export const LAYOUT = {
   PUBLIC: 'public',
-  AUTH: 'auth'
+  AUTH: 'auth',
+  ERROR: 'error'
 }

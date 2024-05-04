@@ -3,6 +3,7 @@ interface DemoMixin {
   a: string
   // Declare other properties and methods of the mixin if needed
 }
+
 export const demoMixin = {
   data() {
     return {

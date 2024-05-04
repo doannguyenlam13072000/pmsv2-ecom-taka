@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
 import { demoMixin } from '@/mixins/DemoMixin'
 
 export default {
@@ -11,13 +11,3 @@ export default {
     <p>Mixin: {{ a }}</p>
   </div>
 </template>
-
-<style>
-@media (min-width: 1024px) {
-  .about {
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-  }
-}
-</style>

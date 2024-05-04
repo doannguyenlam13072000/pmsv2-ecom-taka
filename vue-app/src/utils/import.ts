@@ -8,6 +8,10 @@ export const registerGlobalComponent = (app: App<Element>) => {
   )
   app.component(
     `${LAYOUT.PUBLIC}-layout`,
-    defineAsyncComponent(() => import('@/layouts/CommonLayout.vue'))
+    defineAsyncComponent(() => import('@/layouts/PublicLayout.vue'))
+  )
+  app.component(
+    `${LAYOUT.ERROR}-layout`,
+    defineAsyncComponent(() => import('@/layouts/ErrorLayout.vue'))
   )
 }
