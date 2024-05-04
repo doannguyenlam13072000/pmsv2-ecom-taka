@@ -15,7 +15,3 @@ const layout = computed<string>(() => {
     <RouterView />
   </component>
 </template>
-
-<style scoped lang="scss">
-
-</style>
