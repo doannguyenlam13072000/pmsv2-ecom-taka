@@ -1,4 +1,6 @@
-export const menus = [
+import type { Menu } from '@/components/SideBar/types'
+
+const menu_items = [
   {
     title: 'Home',
     path: '/',
@@ -37,7 +39,26 @@ export const menus = [
             title: 'Sub menu 2-3',
             path: '/sub-2-3',
             meta: {},
-            subs: []
+            subs: [
+              {
+                title: 'Sub menu 2-3-1',
+                path: '/sub-2-3-1',
+                meta: {},
+                subs: []
+              },
+              {
+                title: 'Sub menu 2-3-2',
+                path: '/sub-2-3-2',
+                meta: {},
+                subs: []
+              },
+              {
+                title: 'Sub menu 2-3-3',
+                path: '/sub-2-3-3',
+                meta: {},
+                subs: []
+              }
+            ]
           }
         ]
       },
@@ -62,3 +83,5 @@ export const menus = [
     subs: []
   }
 ]
+
+export const menus: Array<Menu> = menu_items.map((menu) => menu)

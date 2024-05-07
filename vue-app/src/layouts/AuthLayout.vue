@@ -1,14 +1,20 @@
 <template>
-  <div class="auth-layout w-full">
+  <div class="auth-layout">
     <el-container>
-      <el-header>
+      <el-header class="!px-0">
         <NavBar />
       </el-header>
-
-      <el-main class="h-screen">
-        <slot />
-      </el-main>
-
+      <el-container>
+        <el-aside width="200px">
+          <SideBar />
+        </el-aside>
+        <el-container>
+          <el-main>
+            <slot />
+          </el-main>
+          <el-footer>Footer</el-footer>
+        </el-container>
+      </el-container>
     </el-container>
   </div>
 </template>
