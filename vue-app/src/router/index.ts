@@ -1,5 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import HomeView from '../views/HomeView.vue'
+import HomeView from '../views/HomeView/HomeView.vue'
 import { LAYOUT } from '@/constants/layout'
 
 const router = createRouter({
@@ -20,7 +20,7 @@ const router = createRouter({
       // route level code-splitting
       // this generates a separate chunk (About.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
-      component: () => import('../views/AboutView.vue'),
+      component: () => import('../views/AboutView/AboutView.vue'),
       meta: {
         requireAuth: 'true',
         layout: LAYOUT.AUTH
@@ -29,7 +29,7 @@ const router = createRouter({
     {
       path: '/:catchAll(.*)',
       name: 'not-found',
-      component: () => import('../views/NotFound.vue')
+      component: () => import('../views/NotFound/NotFound.vue')
     }
   ]
 })
