@@ -1,5 +1,5 @@
 import { mockAPI } from '@/utils/mockAPI'
-interface DemoMixin {
+export interface DemoMixinInterface {
   a: string
   // Declare other properties and methods of the mixin if needed
 }
@@ -14,7 +14,7 @@ export const demoMixin = {
   beforeCreate() {
     console.log('Mixin beforeCreate')
   },
-  async created(this: DemoMixin) {
+  async created(this: DemoMixinInterface) {
     console.log('Mixin created')
     const res = await mockAPI(3000, 'string')
     console.log('Mixin created response', res, this)
