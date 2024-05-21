@@ -15,6 +15,24 @@ const router = createRouter({
       }
     },
     {
+      path: '/ready-players',
+      name: 'ready-players',
+      component: () => import('@/views/ReadyPlayerView/ReadyPlayerView.vue'),
+      meta: {
+        requireAuth: 'true',
+        layout: LAYOUT.AUTH
+      }
+    },
+    {
+      path: '/preview',
+      name: 'preview',
+      component: () => import('@/views/GLBPreviewView/GLBPreviewView.vue'),
+      meta: {
+        requireAuth: 'true',
+        layout: LAYOUT.AUTH
+      }
+    },
+    {
       path: '/about',
       name: 'about',
       // route level code-splitting

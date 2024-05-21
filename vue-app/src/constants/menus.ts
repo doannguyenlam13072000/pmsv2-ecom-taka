@@ -13,10 +13,17 @@ const menu_items = [
     meta: {},
     subs: [
       {
-        title: 'Sub menu 1',
-        path: '/sub-1',
+        title: 'Ready players me',
+        path: '/ready-players',
         meta: {},
-        subs: []
+        subs: [
+          {
+            title: 'Preview',
+            path: '/preview',
+            meta: {},
+            subs: []
+          }
+        ]
       },
       {
         title: 'Sub menu 2',
