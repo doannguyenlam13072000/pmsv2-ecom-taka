@@ -15,8 +15,8 @@ const router = createRouter({
       }
     },
     {
-      path: '/ready-players',
-      name: 'ready-players',
+      path: '/create-players',
+      name: 'create-players',
       component: () => import('@/views/ReadyPlayerView/ReadyPlayerView.vue'),
       meta: {
         requireAuth: 'true',

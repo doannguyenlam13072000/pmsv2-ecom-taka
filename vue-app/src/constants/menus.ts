@@ -14,9 +14,15 @@ const menu_items = [
     subs: [
       {
         title: 'Ready players me',
-        path: '/ready-players',
+        path: '',
         meta: {},
         subs: [
+          {
+            title: 'Create players',
+            path: '/create-players',
+            meta: {},
+            subs: []
+          },
           {
             title: 'Preview',
             path: '/preview',
