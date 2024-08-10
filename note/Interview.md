@@ -5,7 +5,7 @@
 ### Vue JS
 
 - [x] Life cycle hook
-- [x] Install pina
+- [x] Use pina/vuex
 - [x] Router
 - [x] Teleport
 - [x] Suspend
@@ -66,6 +66,14 @@
     - Bao đóng: các biến khai báo trong đó thì bên ngoài sẽ k truy cập được
     - Isolate: ngăn chặn việc conflict name trong và func trong phạm vi IIFE
     - Cho phép tạo ra các module tự thực thi độc lập
+
+- [x] null và undefined
+  - undefined: là giá trị mặc định được gán khi được khởi tạo khi nó không dc cung cấp giá trị hay khai báo
+  - null: là giá trị biểu thị là biến dc gán là k có giá trị
+
+- [x] any và unknown trong TS:
+  - any: có thể sự dụng bất kì thao tác (gọi gàm, truy xuất,...) mà bỏ qua bước kiểm tra kiểu dữ liệu
+  - unknown: cần kiểm tra kiểu dữ liệu. Các giá trị của unknown chỉ có thể gán cho unknown hoặc any
 
 - [x] Sự khác biệt giữa tiếp cận mobile first vs desktop first khác nhau, điểm mạnh điểm yếu
   - Mobile first: Tập trung vào trải nghiệm của người dùng di động trước. Điểm mạnh: Tải trang nhanh do thiết kế nhẹ, khả năng tiếp cận tốt đối với người dùng di động. Điểm yếu: Cần phải thêm và chỉnh sửa nhiều khi hoàn thiện trên desktop.
