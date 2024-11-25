@@ -30,8 +30,7 @@
 ### Frontend
 
 - [x] Call back func - promise - async await - Call back hell là gì
-  - Callback function: Là 1 function được thực thi sau khi 1 function khác được hoàn thành. Callback handle cho các async operation như call api, xử lý sự kiện
-  - Callback hell: là callback lồng nhau. Điều này rất khó để maintain
+  - Callback function: Là 1 function được thực thi sau khi 1 function khác được hoàn thành.
 
 - [x] Excution context
 - [x] Hoisting
