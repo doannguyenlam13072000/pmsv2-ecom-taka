@@ -3,7 +3,7 @@ import { fileURLToPath, URL } from 'node:url'
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import VueDevTools from 'vite-plugin-vue-devtools'
-
+import legacy from '@vitejs/plugin-legacy'
 import AutoImport from 'unplugin-auto-import/vite'
 import Components from 'unplugin-vue-components/vite'
 import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
@@ -20,6 +20,9 @@ export default defineConfig({
       resolvers: [ElementPlusResolver()],
       extensions: ['vue', 'md'],
       dts: 'src/components.d.ts'
+    }),
+    legacy({
+      targets: ['defaults', 'not IE 11']
     })
   ],
   css: {
@@ -35,10 +38,19 @@ export default defineConfig({
     }
   },
   server: {
-    port: 8081,
+    port: 8080,
     host: true,
     watch: {
       usePolling: true
+    }
+  },
+  test: {
+    globals: true,
+    environment: 'jsdom',
+    exclude: ['node_modules', 'dist'],
+    coverage: {
+      provider: 'istanbul',
+      reporter: ['html', 'json', 'text']
     }
   }
 })
