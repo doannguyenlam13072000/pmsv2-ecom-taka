@@ -12,7 +12,12 @@
     }
   ],
   "compilerOptions": {
-    "types": ["vue", "vue-router"],
+    "types": [
+      "vue",
+      "vue-router",
+      "vite/client",
+      "vitest"
+    ],
     "moduleResolution": "node"
   }
 }

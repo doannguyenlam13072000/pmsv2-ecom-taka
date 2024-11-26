@@ -18,10 +18,9 @@ export default function registerDemoDrirective(app: App<Element>) {
       if (binding.modifiers['delay']) {
         const DELAY = 2000
         setTimeout(() => {
-          el.textContent += DELAY/1000 + ' seconds'
-        }, DELAY);
+          el.textContent += DELAY / 1000 + ' seconds'
+        }, DELAY)
       } else {
-
       }
     },
     beforeMount(el, binding, vnode, preNode) {},
