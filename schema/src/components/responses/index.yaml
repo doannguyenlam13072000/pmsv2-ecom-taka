@@ -1,0 +1,6 @@
+components:
+  schemas:
+    BaseResponse:
+      $ref: "./base.yaml#components/schemas/BaseResponse"
+    SampleSuccess:
+      $ref: "./sample-success.yaml#components/schemas/SampleSuccess"

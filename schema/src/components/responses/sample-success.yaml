@@ -1,0 +1,15 @@
+components:
+  schemas:
+    SampleSuccess:
+      allOf:
+        - $ref: "./base.yaml#/components/schemas/BaseResponse"
+        - type: object
+          properties:
+            name:
+              type: string
+              description: Name of the user
+            age:
+              type: integer
+              description: Age of the user
+              minimum: 0
+              maximum: 150

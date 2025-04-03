@@ -1,0 +1,12 @@
+openapi: 3.0.0
+info:
+  title: My API
+  version: 1.0.0
+paths:
+  $ref: "./apis/index.yaml"
+
+components:
+  $ref: "./components/index.yaml"
+
+security:
+  - BearerAuth: []

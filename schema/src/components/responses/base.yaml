@@ -1,0 +1,16 @@
+components:
+  schemas:
+    BaseResponse:
+      type: object
+      properties:
+        message:
+          type: string
+          description: Response message
+        data:
+          type: object
+          additionalProperties: true
+          description: Any data object (dynamic content)
+        error:
+          type: boolean
+          description: Indicates if there was an error
+          default: false
