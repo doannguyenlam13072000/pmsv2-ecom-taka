@@ -1,16 +1,16 @@
-/**
+/*
  * Data Service
  */
 (function() {
   'use strict';
 
+  // Service definition
   angular
     .module('myApp')
     .factory('dataService', dataService);
 
-  dataService.$inject = ['$window'];
-
-  function dataService($window) {
+  // Service function
+  function dataService() {
     // Sample data
     var items = [
       'Learn Angular 1.8',

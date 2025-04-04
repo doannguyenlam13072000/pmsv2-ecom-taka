@@ -1,15 +1,15 @@
-/**
+/*
  * Home Controller
  */
 (function() {
   'use strict';
 
+  // Controller definition
   angular
     .module('myApp')
     .controller('HomeController', HomeController);
 
-  HomeController.$inject = ['$scope', 'dataService'];
-
+  // Controller function
   function HomeController($scope, dataService) {
     var vm = this;
     
@@ -43,4 +43,7 @@
       dataService.removeItem(index);
     }
   }
+
+  // Inject dependencies
+  HomeController.$inject = ['$scope', 'dataService'];
 })();

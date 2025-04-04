@@ -1,18 +1,20 @@
-/**
+/*
  * About Controller
  */
-(function() {
+(function () {
   'use strict';
 
+  // Controller definition
   angular
     .module('myApp')
     .controller('AboutController', AboutController);
-
+  // Inject dependencies
   AboutController.$inject = ['$scope'];
-
+  
+  // Controller function
   function AboutController($scope) {
     var vm = this;
-    
+    $scope.abc = "Test"
     // Controller properties
     vm.title = 'About Page';
     vm.appInfo = {

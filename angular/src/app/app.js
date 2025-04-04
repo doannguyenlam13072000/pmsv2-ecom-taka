@@ -1,4 +1,4 @@
-/**
+/*
  * Main Angular Application Module
  */
 (function() {
@@ -12,8 +12,6 @@
     .config(configRoutes);
 
   // Configure routes
-  configRoutes.$inject = ['$routeProvider', '$locationProvider'];
-  
   function configRoutes($routeProvider, $locationProvider) {
     $locationProvider.hashPrefix('!');
     
@@ -28,8 +26,16 @@
         controller: 'AboutController',
         controllerAs: 'vm'
       })
+      .when('/sample', {
+        templateUrl: 'app/views/sample.html',
+        controller: 'SampleController',
+        controllerAs: 'vm'
+      })
       .otherwise({
         redirectTo: '/'
       });
   }
+
+  // Inject dependencies
+  configRoutes.$inject = ['$routeProvider', '$locationProvider'];
 })();

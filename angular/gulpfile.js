@@ -1,13 +1,13 @@
-const gulp = require('gulp');
-const browserSync = require('browser-sync').create();
-const concat = require('gulp-concat');
-const uglify = require('gulp-uglify');
-const cleanCSS = require('gulp-clean-css');
-const rename = require('gulp-rename');
-const del = require('del');
+var gulp = require('gulp');
+var browserSync = require('browser-sync').create();
+var concat = require('gulp-concat');
+var uglify = require('gulp-uglify');
+var cleanCSS = require('gulp-clean-css');
+var rename = require('gulp-rename');
+var del = require('del');
 
 // File paths
-const paths = {
+var paths = {
   src: 'src',
   dist: 'dist',
   scripts: {
@@ -92,7 +92,7 @@ function serve() {
 }
 
 // Define complex tasks
-const build = gulp.series(clean, gulp.parallel(html, scripts, styles, vendor));
+var build = gulp.series(clean, gulp.parallel(html, scripts, styles, vendor));
 
 // Export tasks
 exports.clean = clean;
