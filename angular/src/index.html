@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Angular 1.8 ES5 App</title>
+  <!-- Vendor CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css">
+  <!-- App CSS -->
+  <link rel="stylesheet" href="css/styles.min.css">
+</head>
+<body>
+  <div class="container">
+    <header class="py-4">
+      <h1>Angular 1.8 ES5 App</h1>
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="#!/">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#!/about">About</a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+
+    <main class="py-4">
+      <!-- Views will be injected here -->
+      <div ng-view></div>
+    </main>
+
+    <footer class="py-4 text-center">
+      <p>&copy; 2025 Angular 1.8 ES5 App</p>
+    </footer>
+  </div>
+
+  <!-- Vendor JS -->
+  <script src="vendor/angular.min.js"></script>
+  <script src="vendor/angular-route.min.js"></script>
+  
+  <!-- App JS -->
+  <script src="js/app.min.js"></script>
+</body>
+</html>
