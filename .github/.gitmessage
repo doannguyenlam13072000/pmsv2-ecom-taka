@@ -1,0 +1,8 @@
+[type][scope]: title
+
+# title: 50 characters max, short summary
+# type: feat | fix | refactor | perf | build | chore | docs | style | test
+# scope: FE | BE | BOTH | OTHER
+# description: (Explain why the change was made and any additional details)
+# - Fix bug in feature X
+# - Add new UI component
