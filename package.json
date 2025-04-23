@@ -1,9 +1,27 @@
 {
-  "devDependencies": {
-    "husky": "^9.1.7"
-  },
+  "private": true,
+  "license": "MIT",
+  "workspaces": [
+    "apps/*",
+    "apps/frontend/*",
+    "apps/services/*",
+    "packages/*"
+  ],
   "scripts": {
     "prepare": "husky",
-    "test": "echo 'No tests specified' && exit 0"
+    "test": "echo 'No tests specified' && exit 0",
+    "build:packages": "pnpm -r --filter \"./packages/**\" build",
+    "build:apis": "pnpm --filter @luxubu/apis build",
+    "build:config": "pnpm --filter @luxubu/config build",
+    "build:constants": "pnpm --filter @luxubu/constants build",
+    "build:ui": "pnpm --filter @luxubu/ui build",
+    "build:types": "pnpm --filter @luxubu/types build",
+    "build:utils": "pnpm --filter @luxubu/utils build",
+    "clean": "rimraf ./packages/*/dist"
+  },
+  "devDependencies": {
+    "husky": "^9.1.7",
+    "rimraf": "^6.0.1",
+    "vite": "^6.3.2"
   }
 }

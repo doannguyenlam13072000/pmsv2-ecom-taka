@@ -17,10 +17,6 @@
     "coverage": "vitest run --coverage",
     "cy:open": "cypress open"
   },
-  "resolutions": {
-    "wrap-ansi": "7.0.0",
-    "string-width": "4.1.0"
-  },
   "dependencies": {
     "element-plus": "^2.7.0",
     "pinia": "^2.1.7",
