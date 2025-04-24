@@ -1,5 +1,5 @@
 {
-    "name": "@luxubu/config",
+    "name": "@luxubu/packages-config",
     "version": "0.1.0",
     "main": "dist/config.umd.js",
     "module": "dist/config.es.js",

@@ -1,5 +1,5 @@
 {
-    "name": "@luxubu/types",
+    "name": "@luxubu/packages-types",
     "version": "0.1.0",
     "main": "dist/types.umd.js",
     "module": "dist/types.es.js",

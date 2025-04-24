@@ -1,5 +1,5 @@
 {
-    "name": "@luxubu/apis",
+    "name": "@luxubu/packages-apis",
     "version": "0.1.0",
     "main": "dist/apis.umd.js",
     "module": "dist/apis.es.js",

@@ -1,5 +1,5 @@
 {
-    "name": "@luxubu/ui",
+    "name": "@luxubu/packages-ui",
     "version": "0.1.0",
     "main": "dist/ui.umd.js",
     "module": "dist/ui.es.js",

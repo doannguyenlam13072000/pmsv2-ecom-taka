@@ -1,5 +1,5 @@
 {
-    "name": "@luxubu/constants",
+    "name": "@luxubu/packages-constants",
     "version": "0.1.0",
     "main": "dist/constants.umd.js",
     "module": "dist/constants.es.js",

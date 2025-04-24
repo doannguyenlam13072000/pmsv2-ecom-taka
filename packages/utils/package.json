@@ -1,5 +1,5 @@
 {
-    "name": "@luxubu/utils",
+    "name": "@luxubu/packages-utils",
     "version": "0.1.0",
     "main": "dist/utils.umd.js",
     "module": "dist/utils.es.js",
