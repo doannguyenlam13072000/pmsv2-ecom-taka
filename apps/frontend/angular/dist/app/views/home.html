@@ -1,0 +1,55 @@
+<div class="home-view">
+  <div class="jumbotron">
+    <h2>{{vm.title}}</h2>
+    <p class="lead">Welcome to this simple Angular 1.8 application built with ES5!</p>
+  </div>
+
+  <div class="row">
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-header">
+          <h3>Todo List</h3>
+        </div>
+        <div class="card-body">
+          <form ng-submit="vm.addItem()">
+            <div class="input-group mb-3">
+              <input type="text" class="form-control" placeholder="Add new item..." ng-model="vm.newItem">
+              <div class="input-group-append">
+                <button class="btn btn-primary" type="submit">Add</button>
+              </div>
+            </div>
+          </form>
+          
+          <ul class="list-group mt-3">
+            <li class="list-group-item d-flex justify-content-between align-items-center" ng-repeat="item in vm.items track by $index">
+              {{item}}
+              <button class="btn btn-sm btn-danger" ng-click="vm.removeItem($index)">
+                <span>&times;</span>
+              </button>
+            </li>
+            <li class="list-group-item text-center" ng-if="vm.items.length === 0">
+              No items yet. Add some!
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-header">
+          <h3>Features</h3>
+        </div>
+        <div class="card-body">
+          <ul class="list-group">
+            <li class="list-group-item">Angular 1.8.3</li>
+            <li class="list-group-item">ES5 JavaScript</li>
+            <li class="list-group-item">Component-based architecture</li>
+            <li class="list-group-item">Services for data management</li>
+            <li class="list-group-item">Routing with ngRoute</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
