@@ -21,7 +21,6 @@
     "clean:packages": "rimraf ./shared/packages/*"
   },
   "devDependencies": {
-    "husky": "^9.1.7",
     "rimraf": "^6.0.1",
     "vite": "^6.3.2"
   }
