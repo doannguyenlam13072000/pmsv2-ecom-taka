@@ -7,18 +7,25 @@
     "apps/services/*",
     "packages/*"
   ],
+  "packageManager": "pnpm@10.8.1",
   "scripts": {
     "prepare": "husky",
     "test": "echo 'No tests specified' && exit 0",
     "build:packages": "pnpm -r --filter @luxubu/packages-* build",
     "build:apis": "pnpm --filter @luxubu/packages-apis build",
-    "build:config": "pnpm --filter @luxubu/config build",
-    "build:constants": "pnpm --filter @luxubu/constants build",
-    "build:ui": "pnpm --filter @luxubu/ui build",
-    "build:types": "pnpm --filter @luxubu/types build",
-    "build:utils": "pnpm --filter @luxubu/utils build",
+    "build:config": "pnpm --filter @luxubu/packages-config build",
+    "build:constants": "pnpm --filter @luxubu/packages-constants build",
+    "build:ui": "pnpm --filter @luxubu/packages-ui build",
+    "build:types": "pnpm --filter @luxubu/packages-types build",
+    "build:utils": "pnpm --filter @luxubu/packages-utils build",
     "clean": "rimraf ./shared",
-    "clean:packages": "rimraf ./shared/packages/*"
+    "clean:packages": "rimraf ./shared/packages/*",
+    "clear:packages:apis": "rimraf ./shared/packages/@luxubu/packages-apis",
+    "clear:packages:config": "rimraf ./shared/packages/@luxubu/packages-config",
+    "clear:packages:constants": "rimraf ./shared/packages/@luxubu/packages-constants",
+    "clear:packages:ui": "rimraf ./shared/packages/@luxubu/packages-ui",
+    "clear:packages:types": "rimraf ./shared/packages/@luxubu/packages-types",
+    "clear:packages:utils": "rimraf ./shared/packages/@luxubu/packages-utils"
   },
   "devDependencies": {
     "rimraf": "^6.0.1",
