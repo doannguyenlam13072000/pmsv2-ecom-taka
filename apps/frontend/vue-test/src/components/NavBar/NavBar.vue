@@ -22,10 +22,17 @@
 <script lang="ts" setup>
 import { menus } from '@/constants/menus'
 import { ref } from 'vue'
+import { useRouter } from 'vue-router'
 
+const router = useRouter()
 const activeIndex = ref<string>('1')
+
 const handleSelect = (key: string, keyPath: string[]) => {
   console.log(key, keyPath)
+}
+
+const handleLogin = () => {
+  router.push('/login')
 }
 </script>
 

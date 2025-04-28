@@ -4,7 +4,9 @@
   "include": [
     "**/*.spec.ts",
     "src/**/*.ts",
-    "vitest.config.ts"
+    "src/**/*.vue",
+    "vitest.config.ts",
+    "vite.config.ts"
   ],
   "compilerOptions": {
     "composite": true,
@@ -12,7 +14,8 @@
     "lib": [],
     "types": [
       "vitest",
-      "node"
+      "node",
+      "vite/client"
     ],
     "moduleResolution": "node",
     "module": "esnext"

@@ -43,14 +43,5 @@ export default defineConfig({
     watch: {
       usePolling: true
     }
-  },
-  test: {
-    globals: true,
-    environment: 'jsdom',
-    exclude: ['node_modules', 'dist'],
-    coverage: {
-      provider: 'istanbul',
-      reporter: ['html', 'json', 'text']
-    }
   }
 })
