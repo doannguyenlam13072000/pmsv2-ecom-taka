@@ -2,7 +2,7 @@ import { defineConfig } from 'vite';
 
 export default defineConfig({
     build: {
-        outDir: '../../shared/packages/constants',
+        outDir: 'dist',
         lib: {
             entry: 'src/index.ts',
             name: 'Constants',

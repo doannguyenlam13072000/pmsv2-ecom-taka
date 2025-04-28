@@ -10,25 +10,30 @@
   "packageManager": "pnpm@10.8.1",
   "scripts": {
     "prepare": "husky",
-    "test": "echo 'No tests specified' && exit 0",
-    "build:packages": "pnpm -r --filter @luxubu/packages-* build",
-    "build:apis": "pnpm --filter @luxubu/packages-apis build",
-    "build:config": "pnpm --filter @luxubu/packages-config build",
-    "build:constants": "pnpm --filter @luxubu/packages-constants build",
-    "build:ui": "pnpm --filter @luxubu/packages-ui build",
-    "build:types": "pnpm --filter @luxubu/packages-types build",
-    "build:utils": "pnpm --filter @luxubu/packages-utils build",
-    "clean": "rimraf ./shared",
-    "clean:packages": "rimraf ./shared/packages/*",
-    "clear:packages:apis": "rimraf ./shared/packages/@luxubu/packages-apis",
-    "clear:packages:config": "rimraf ./shared/packages/@luxubu/packages-config",
-    "clear:packages:constants": "rimraf ./shared/packages/@luxubu/packages-constants",
-    "clear:packages:ui": "rimraf ./shared/packages/@luxubu/packages-ui",
-    "clear:packages:types": "rimraf ./shared/packages/@luxubu/packages-types",
-    "clear:packages:utils": "rimraf ./shared/packages/@luxubu/packages-utils"
+    "dev": "turbo run dev",
+    "test": "turbo run test",
+    "lint": "turbo run lint",
+    "build": "turbo run build",
+    "build:packages": "turbo run build --filter=@luxubu/packages-*",
+    "build:apis": "turbo run build --filter=@luxubu/packages-apis",
+    "build:config": "turbo run build --filter=@luxubu/packages-config",
+    "build:constants": "turbo run build --filter=@luxubu/packages-constants",
+    "build:ui": "turbo run build --filter=@luxubu/packages-ui",
+    "build:types": "turbo run build --filter=@luxubu/packages-types",
+    "build:utils": "turbo run build --filter=@luxubu/packages-utils",
+    "clean": "turbo run clean && rimraf ./dist ./node_modules",
+    "clean:packages": "rimraf ./packages/*/dist",
+    "clear:packages:apis": "rimraf ./packages/apis/dist",
+    "clear:packages:config": "rimraf ./packages/config/dist",
+    "clear:packages:constants": "rimraf ./packages/constants/dist",
+    "clear:packages:ui": "rimraf ./packages/ui/dist",
+    "clear:packages:types": "rimraf ./packages/types/dist",
+    "clear:packages:utils": "rimraf ./packages/utils/dist"
   },
   "devDependencies": {
     "rimraf": "^6.0.1",
-    "vite": "^6.3.2"
+    "vite": "^6.3.2",
+    "turbo": "^2.5.2",
+    "husky": "^9.1.7"
   }
 }

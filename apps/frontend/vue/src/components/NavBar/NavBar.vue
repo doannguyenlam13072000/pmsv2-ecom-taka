@@ -10,7 +10,9 @@
     <el-menu-item index="-1">
       <img style="width: 40px; height: auto" src="@/assets/logo.svg" alt="Element logo" />
     </el-menu-item>
-    <div class="flex-grow" />
+    <div class="flex-grow">
+      <el-button type="primary" @click="handleLogin">Login</el-button>
+    </div>
 
     <!-- Right -->
     <SubMenu v-for="(item, index) in menus" :menu="item" :key="index" :index="String(index)" />
@@ -20,9 +22,6 @@
 <script lang="ts" setup>
 import { menus } from '@/constants/menus'
 import { ref } from 'vue'
-import { useRouter } from 'vue-router'
-
-const router = useRouter()
 
 const activeIndex = ref<string>('1')
 const handleSelect = (key: string, keyPath: string[]) => {

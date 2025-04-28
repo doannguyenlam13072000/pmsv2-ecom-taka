@@ -2,7 +2,7 @@ import { defineConfig } from 'vite';
 
 export default defineConfig({
     build: {
-        outDir: '../../shared/packages/apis',
+        outDir: 'dist',
         lib: {
             entry: 'src/index.ts',
             name: 'APIs',
