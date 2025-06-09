@@ -1,0 +1,19 @@
+{
+    "name": "@luxubu/packages-config",
+    "version": "0.1.0",
+    "main": "dist/config.umd.js",
+    "module": "dist/config.es.js",
+    "types": "dist/index.d.ts",
+    "files": [
+        "dist"
+    ],
+    "scripts": {
+        "clean": "rm -rf dist",
+        "build": "vite build && tsc --emitDeclarationOnly"
+    },
+    "devDependencies": {
+        "@types/node": "^20.12.5",
+        "typescript": "^5.0.0",
+        "vite": "^4.3.0"
+    }
+}

@@ -1,9 +1,39 @@
 {
-  "devDependencies": {
-    "husky": "^9.1.7"
-  },
+  "private": true,
+  "license": "MIT",
+  "workspaces": [
+    "apps/*",
+    "apps/frontend/*",
+    "apps/services/*",
+    "packages/*"
+  ],
+  "packageManager": "pnpm@10.8.1",
   "scripts": {
     "prepare": "husky",
-    "test": "echo 'No tests specified' && exit 0"
+    "dev": "turbo run dev",
+    "test": "turbo run test",
+    "lint": "turbo run lint",
+    "build": "turbo run build",
+    "build:packages": "turbo run build --filter=@luxubu/packages-*",
+    "build:apis": "turbo run build --filter=@luxubu/packages-apis",
+    "build:config": "turbo run build --filter=@luxubu/packages-config",
+    "build:constants": "turbo run build --filter=@luxubu/packages-constants",
+    "build:ui": "turbo run build --filter=@luxubu/packages-ui",
+    "build:types": "turbo run build --filter=@luxubu/packages-types",
+    "build:utils": "turbo run build --filter=@luxubu/packages-utils",
+    "clean": "turbo run clean && rimraf ./dist ./node_modules",
+    "clean:packages": "rimraf ./packages/*/dist",
+    "clear:packages:apis": "rimraf ./packages/apis/dist",
+    "clear:packages:config": "rimraf ./packages/config/dist",
+    "clear:packages:constants": "rimraf ./packages/constants/dist",
+    "clear:packages:ui": "rimraf ./packages/ui/dist",
+    "clear:packages:types": "rimraf ./packages/types/dist",
+    "clear:packages:utils": "rimraf ./packages/utils/dist"
+  },
+  "devDependencies": {
+    "rimraf": "^6.0.1",
+    "vite": "^6.3.2",
+    "turbo": "^2.5.2",
+    "husky": "^9.1.7"
   }
 }
