@@ -9,7 +9,7 @@
     "preview": "vite preview",
     "format": "prettier --write 'src/**/*.{ts,tsx,js}'",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
-    "lint:fix": "eslint --fix 'src/**/*.{js,jsx,ts,tsx,json}'"
+    "lint:fix": "echo 'Not implemented yet'"
   },
   "dependencies": {
     "react": "^18.2.0",
