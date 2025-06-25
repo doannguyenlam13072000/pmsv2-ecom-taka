@@ -9,10 +9,10 @@
   ],
   "packageManager": "pnpm@10.8.1",
   "scripts": {
-    "prepare": "husky",
     "dev": "turbo run dev",
     "test": "turbo run test",
     "lint": "turbo run lint",
+    "lint:fix": "turbo run lint:fix",
     "build": "turbo run build",
     "build:packages": "turbo run build --filter=@luxubu/packages-*",
     "build:apis": "turbo run build --filter=@luxubu/packages-apis",
@@ -28,12 +28,17 @@
     "clear:packages:constants": "rimraf ./packages/constants/dist",
     "clear:packages:ui": "rimraf ./packages/ui/dist",
     "clear:packages:types": "rimraf ./packages/types/dist",
-    "clear:packages:utils": "rimraf ./packages/utils/dist"
+    "clear:packages:utils": "rimraf ./packages/utils/dist",
+    "prepare": "husky"
   },
   "devDependencies": {
+    "husky": "^8.0.1",
+    "lint-staged": "^16.1.0",
     "rimraf": "^6.0.1",
-    "vite": "^6.3.2",
     "turbo": "^2.5.2",
-    "husky": "^9.1.7"
+    "vite": "^6.3.2"
+  },
+  "lint-staged": {
+    "apps/frontend/vue/**/*": "pnpm --filter vue-app lint"
   }
 }
