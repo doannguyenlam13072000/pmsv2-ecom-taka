@@ -18,7 +18,7 @@ export const authRoutes: RouteRecordRaw[] = [
   {
     path: "/",
     name: "Dashboard",
-    component: asyncView(() => import("@/pages/dashboard/index.vue")),
+    component: asyncView(() => import("@/pages/Dashboard/index.vue")),
     meta: {
       requiresAuth: true,
       layout: LAYOUT.AUTH,

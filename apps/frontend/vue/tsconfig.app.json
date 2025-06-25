@@ -9,6 +9,9 @@
         "src/*"
       ]
     },
+    "types": [
+      "element-plus/global"
+    ],
     "strict": true,
     "noFallthroughCasesInSwitch": true,
     "noUnusedLocals": true,
@@ -17,8 +20,15 @@
     "noUncheckedSideEffectImports": true
   },
   "include": [
+    "src/**/*",
     "src/**/*.ts",
     "src/**/*.tsx",
-    "src/**/*.vue"
-  ]
+    "src/**/*.vue",
+    "tailwind.config.cjs"
+  ],
+  "vueCompilerOptions": {
+    "extensions": [
+      ".vue"
+    ]
+  }
 }

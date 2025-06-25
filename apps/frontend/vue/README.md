@@ -6,8 +6,8 @@ Learn more about the recommended Project Setup and IDE Support in the [Vue Docs 
 
 ## 1. Library
 
-- [ ] Vue router
-- [ ] Vue Element+
+- [x] Vue router
+- [x] Vue Element+
 - [ ] Tailwind css
 - [ ] Pina
 - [ ] Vee-validate
@@ -15,5 +15,6 @@ Learn more about the recommended Project Setup and IDE Support in the [Vue Docs 
 - [ ] Axios
 - [ ] Dayjs
 - [ ] @tanstack/vue-query
-- [ ] unplugin-auto-import
-- [ ] unplugin-vue-components
+- [x] unplugin-auto-import
+- [x] unplugin-vue-components
+- [ ] i18n

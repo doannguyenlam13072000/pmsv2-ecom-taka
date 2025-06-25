@@ -19,7 +19,7 @@ export const publicRoutes: RouteRecordRaw[] = [
   {
     path: "/sign-in",
     name: "SignIn",
-    component: asyncView(() => import("@/pages/sign-in/index.vue")),
+    component: asyncView(() => import("@/pages/SignIn/index.vue")),
     meta: {
       requiresAuth: false,
       layout: LAYOUT.PUBLIC,
