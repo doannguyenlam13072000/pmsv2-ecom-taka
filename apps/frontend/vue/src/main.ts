@@ -1,9 +1,12 @@
 import ElementPlus from "element-plus";
 import "element-plus/dist/index.css";
-import { createApp } from "vue";
+import { createPinia } from "pinia";
+import piniaPluginPersistedstate from "pinia-plugin-persistedstate";
 
 // Tailwind css
 import "@/assets/tailwind.css";
+
+import { createApp } from "vue";
 
 import App from "./App.vue";
 // Directives
@@ -14,10 +17,14 @@ import { registerGlobalComponent } from "./utils/import";
 
 const app = createApp(App);
 
+const pinia = createPinia();
+pinia.use(piniaPluginPersistedstate);
+
 registerGlobalComponent(app);
 registerGolbalDirective(app);
 
 app.use(router);
 app.use(ElementPlus);
+app.use(pinia);
 
 app.mount("#app");

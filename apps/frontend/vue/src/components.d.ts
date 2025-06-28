@@ -9,7 +9,6 @@ declare module 'vue' {
   export interface GlobalComponents {
     ElButton: typeof import('element-plus/es')['ElButton']
     Error: typeof import('./components/common/Error/index.vue')['default']
-    HelloWorld: typeof import('./components/HelloWorld.vue')['default']
     Loading: typeof import('./components/common/Loading/index.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']

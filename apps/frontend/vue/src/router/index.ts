@@ -1,5 +1,7 @@
 import { createRouter, createWebHistory, type RouteRecordRaw } from "vue-router";
 
+import { useAuthStore } from "@/stores";
+
 import { authRoutes } from "./auth";
 import { publicRoutes } from "./public";
 
@@ -24,7 +26,8 @@ const router = createRouter({
 // middleware check auth
 router.beforeEach((to, _from, next) => {
   // TODO: update later
-  const isAuthenticated = true; // Replace with your real auth check
+  const auth = useAuthStore();
+  const isAuthenticated = auth.token; // Replace with your real auth check
 
   const isPublic = to.meta.requiresAuth !== true;
 

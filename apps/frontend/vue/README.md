@@ -8,8 +8,8 @@ Learn more about the recommended Project Setup and IDE Support in the [Vue Docs 
 
 - [x] Vue router
 - [x] Vue Element+
-- [ ] Tailwind css
-- [ ] Pina
+- [x] Tailwind css
+- [x] Pina
 - [ ] Vee-validate
 - [ ] Zod
 - [ ] Axios
