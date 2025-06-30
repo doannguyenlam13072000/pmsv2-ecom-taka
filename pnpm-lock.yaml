@@ -96,6 +96,9 @@ importers:
 
   apps/frontend/vue:
     dependencies:
+      dayjs:
+        specifier: ^1.11.13
+        version: 1.11.13
       element-plus:
         specifier: ^2.7.0
         version: 2.9.8(vue@3.5.13(typescript@5.8.3))
