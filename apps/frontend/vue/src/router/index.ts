@@ -27,7 +27,7 @@ const router = createRouter({
 router.beforeEach((to, _from, next) => {
   // TODO: update later
   const auth = useAuthStore();
-  const isAuthenticated = auth.token; // Replace with your real auth check
+  const isAuthenticated = auth.accessToken; // Replace with your real auth check
 
   const isPublic = to.meta.requiresAuth !== true;
 

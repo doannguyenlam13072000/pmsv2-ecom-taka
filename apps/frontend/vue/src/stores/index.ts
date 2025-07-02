@@ -1,4 +1,3 @@
-// Import helper from Pinia to enable hot module replacement (HMR)
 import { acceptHMRUpdate, type StoreDefinition } from "pinia";
 
 // Define a type for store modules: key is export name, value is a Pinia store definition

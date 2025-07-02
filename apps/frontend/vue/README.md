@@ -17,4 +17,4 @@ Learn more about the recommended Project Setup and IDE Support in the [Vue Docs 
 - [ ] @tanstack/vue-query
 - [x] unplugin-auto-import
 - [x] unplugin-vue-components
-- [ ] vue-i18n
+- [x] vue-i18n
