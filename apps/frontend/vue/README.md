@@ -13,7 +13,7 @@ Learn more about the recommended Project Setup and IDE Support in the [Vue Docs 
 - [ ] Vee-validate
 - [ ] Zod
 - [ ] Axios
-- [ ] Dayjs
+- [x] Dayjs
 - [ ] @tanstack/vue-query
 - [x] unplugin-auto-import
 - [x] unplugin-vue-components

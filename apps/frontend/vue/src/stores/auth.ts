@@ -6,10 +6,10 @@ export const useAuthStore = defineStore("auth", {
     token: "",
   }),
   actions: {
-    signIn() {
+    async signIn() {
       this.token = "token";
     },
-    signOut() {
+    async signOut() {
       this.token = "";
     },
   },

@@ -1,24 +1,22 @@
 import type { RouteRecordRaw } from "vue-router";
 
-import { defineAsyncComponent } from "vue";
-
-import { DELAY, LAYOUT, TIMEOUT } from "@/constants";
-
-function asyncView(loader: () => Promise<any>) {
-  return defineAsyncComponent({
-    loader,
-    loadingComponent: () => import("@/components/common/Loading/index.vue"),
-    errorComponent: () => import("@/components/common/Error/index.vue"),
-    delay: DELAY,
-    timeout: TIMEOUT,
-  });
-}
+import { LAYOUT } from "@/constants";
 
 export const authRoutes: RouteRecordRaw[] = [
   {
     path: "/",
     name: "Dashboard",
-    component: asyncView(() => import("@/pages/Dashboard/index.vue")),
+    component: () => import("@/pages/Dashboard/Dashboard.vue"),
+    meta: {
+      requiresAuth: true,
+      layout: LAYOUT.AUTH,
+    },
+    children: [],
+  },
+  {
+    path: "/sample",
+    name: "Sample",
+    component: () => import("@/pages/Sample/Sample.vue"),
     meta: {
       requiresAuth: true,
       layout: LAYOUT.AUTH,

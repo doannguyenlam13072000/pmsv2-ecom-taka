@@ -6,13 +6,13 @@ export function useAuth() {
   const router = useRouter();
   const authStore = useAuthStore();
 
-  const handleSignIn = () => {
-    authStore.signIn();
+  const handleSignIn = async () => {
+    await authStore.signIn();
     router.push({ name: "Dashboard" });
   };
 
-  const handleSignOut = () => {
-    authStore.signOut();
+  const handleSignOut = async () => {
+    await authStore.signOut();
     router.push({ name: "SignIn" });
   };
 
