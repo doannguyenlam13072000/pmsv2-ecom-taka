@@ -11,6 +11,8 @@ import { createApp } from "vue";
 import App from "./App.vue";
 // Directives
 import { registerGolbalDirective } from "./directives";
+// i18n
+import { i18n } from "./i18n";
 import router from "./router";
 // Global component
 import { registerGlobalComponent } from "./utils/import";
@@ -23,6 +25,7 @@ pinia.use(piniaPluginPersistedstate);
 registerGlobalComponent(app);
 registerGolbalDirective(app);
 
+app.use(i18n);
 app.use(router);
 app.use(ElementPlus);
 app.use(pinia);

@@ -1,5 +1,9 @@
 <script setup lang="ts">
+import { useI18n } from "vue-i18n";
+
 import { navigateTo } from "@/utils/navigate";
+
+const { t } = useI18n();
 
 import { useCounter } from "./useDashboard";
 
@@ -9,7 +13,7 @@ const { counter, increment, handleSignOut } = useCounter();
 <template>
   <div>
     <h1>
-      Dashboard
+      Dashboard - {{ t('common.appTitle') }}
     </h1>
     <p>Count: {{ counter.count }}</p>
     <el-button type="primary" plain @click="navigateTo('/sample')">

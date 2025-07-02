@@ -10,11 +10,11 @@ Learn more about the recommended Project Setup and IDE Support in the [Vue Docs 
 - [x] Vue Element+
 - [x] Tailwind css
 - [x] Pina
-- [ ] Vee-validate
-- [ ] Zod
+- [x] Vee-validate
+- [x] Zod
 - [ ] Axios
 - [x] Dayjs
 - [ ] @tanstack/vue-query
 - [x] unplugin-auto-import
 - [x] unplugin-vue-components
-- [ ] i18n
+- [ ] vue-i18n
