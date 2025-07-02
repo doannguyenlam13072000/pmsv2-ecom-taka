@@ -12,9 +12,9 @@ Learn more about the recommended Project Setup and IDE Support in the [Vue Docs 
 - [x] Pina
 - [x] Vee-validate
 - [x] Zod
-- [ ] Axios
+- [x] Axios
 - [x] Dayjs
-- [ ] @tanstack/vue-query
+- [x] @tanstack/vue-query
 - [x] unplugin-auto-import
 - [x] unplugin-vue-components
 - [x] vue-i18n
