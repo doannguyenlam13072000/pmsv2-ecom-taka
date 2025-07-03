@@ -20,7 +20,7 @@
     "build:constants": "turbo run build --filter=@luxubu/packages-constants",
     "build:ui": "turbo run build --filter=@luxubu/packages-ui",
     "build:types": "turbo run build --filter=@luxubu/packages-types",
-  "build:utils": "turbo run build --filter=@luxubu/packages-utils",
+    "build:utils": "turbo run build --filter=@luxubu/packages-utils",
     "clean": "turbo run clean && rimraf ./dist ./node_modules",
     "clean:packages": "rimraf ./packages/*/dist",
     "clear:packages:apis": "rimraf ./packages/apis/dist",
