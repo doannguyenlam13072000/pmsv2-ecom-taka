@@ -1,11 +1,25 @@
 import express from 'express';
 import { env, validateEnv } from '@/config';
-import { helmetConfig, devSecurityMiddleware, standardLimiter, devLimiter } from '@/middleware';
+import {
+    helmetConfig,
+    devSecurityMiddleware,
+    standardLimiter,
+    devLimiter,
+    productionCors,
+    developmentCors
+} from '@/middleware';
 
 // Validate environment variables
 validateEnv();
 
 const app = express();
+
+// Apply CORS based on environment
+if (env.NODE_ENV === 'production') {
+    app.use(productionCors);
+} else {
+    app.use(developmentCors);
+}
 
 // Apply security middleware based on environment
 if (env.NODE_ENV === 'production') {
