@@ -1,11 +1,18 @@
 import { Request, Response, NextFunction } from 'express';
 import { z, ZodSchema } from 'zod';
 
-// Simple validation middleware for body
+/**
+ * Simple validation middleware for body
+ * 
+ * @param schema - The schema to validate against
+ * @returns The validation middleware
+ */
 export function validateBody(schema: ZodSchema) {
     return (req: Request, res: Response, next: NextFunction): void => {
         try {
-            req.body = schema.parse(req.body);
+            const validatedBody = schema.parse(req.body);
+            // Add validated body to request object
+            (req as any).validatedBody = validatedBody;
             next();
         } catch (error) {
             if (error instanceof z.ZodError) {
@@ -24,11 +31,18 @@ export function validateBody(schema: ZodSchema) {
     };
 }
 
-// Simple validation middleware for params
+/**
+ * Simple validation middleware for params
+ * 
+ * @param schema - The schema to validate against
+ * @returns The validation middleware
+ */
 export function validateParams(schema: ZodSchema) {
     return (req: Request, res: Response, next: NextFunction): void => {
         try {
-            req.params = schema.parse(req.params);
+            const validatedParams = schema.parse(req.params);
+            // Add validated params to request object
+            (req as any).validatedParams = validatedParams;
             next();
         } catch (error) {
             if (error instanceof z.ZodError) {
@@ -47,11 +61,18 @@ export function validateParams(schema: ZodSchema) {
     };
 }
 
-// Simple validation middleware for query
+/**
+ * Simple validation middleware for query
+ * 
+ * @param schema - The schema to validate against
+ * @returns The validation middleware
+ */
 export function validateQuery(schema: ZodSchema) {
     return (req: Request, res: Response, next: NextFunction): void => {
         try {
-            req.query = schema.parse(req.query);
+            const validatedQuery = schema.parse(req.query);
+            // Add validated query to request object
+            (req as any).validatedQuery = validatedQuery;
             next();
         } catch (error) {
             if (error instanceof z.ZodError) {
@@ -70,5 +91,4 @@ export function validateQuery(schema: ZodSchema) {
     };
 }
 
-// Export zod for schema creation
 export { z }; 

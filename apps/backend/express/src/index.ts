@@ -41,7 +41,7 @@ if (env.NODE_ENV === 'production') {
 // Parse JSON bodies
 app.use(express.json());
 
-// Apply single API logger (start, body, end)
+// HTTP Logger
 app.use(apiLogger);
 
 // All Routes (centralized)

@@ -4,7 +4,9 @@ import { idParamSchema, paginationQuerySchema, testBodySchema } from '@/validato
 
 const router: Router = Router();
 
-// Test basic API logging
+/**
+ * Test basic API logging
+ */
 router.get('/basic', (req: Request, res: Response) => {
     res.json({
         success: true,
@@ -15,9 +17,10 @@ router.get('/basic', (req: Request, res: Response) => {
     });
 });
 
-// Test POST with validation and logging
+/**
+ * Test POST with validation and logging
+ */
 router.post('/body',
-
     validateBody(testBodySchema),
     (req: Request, res: Response) => {
         res.status(201).json({
@@ -29,9 +32,10 @@ router.post('/body',
     }
 );
 
-// Test GET with params validation
+/**
+ * Test GET with params validation
+ */
 router.get('/params/:id',
-
     validateParams(idParamSchema),
     (req: Request, res: Response) => {
         res.json({
@@ -46,9 +50,10 @@ router.get('/params/:id',
     }
 );
 
-// Test GET with query validation
+/**
+ * Test GET with query validation
+ */
 router.get('/search',
-
     validateQuery(paginationQuerySchema),
     (req: Request, res: Response) => {
         res.json({
@@ -68,7 +73,9 @@ router.get('/search',
     }
 );
 
-// Test error response (500)
+/**
+ * Test error response (500)
+ */
 router.get('/error', (_req: Request, res: Response) => {
     res.status(500).json({
         success: false,
@@ -78,16 +85,19 @@ router.get('/error', (_req: Request, res: Response) => {
     });
 });
 
-// Test DELETE with params validation
+/**
+ * Test DELETE with params validation
+ */
 router.delete('/delete/:id',
-
     validateParams(idParamSchema),
     (_req: Request, res: Response) => {
-        res.status(204).send();
+        res.status(204).json();
     }
 );
 
-// Test large response (to test body-size token)
+/**
+ * Test large response (to test body-size token)
+ */
 router.get('/large', (_req: Request, res: Response) => {
     const largeData = Array.from({ length: 1000 }, (_, i) => ({
         id: i,
@@ -99,13 +109,14 @@ router.get('/large', (_req: Request, res: Response) => {
     res.json({
         success: true,
         message: 'Large dataset returned',
-        data: largeData,
         count: largeData.length,
         timestamp: new Date().toISOString()
     });
 });
 
-// Test slow response (to test response time)
+/**
+ * Test slow response (to test response time)
+ */
 router.get('/slow', async (_req: Request, res: Response) => {
     await new Promise(resolve => setTimeout(resolve, 2000)); // 2 second delay
 

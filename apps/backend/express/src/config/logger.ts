@@ -1,7 +1,11 @@
 import winston from 'winston';
 import path from 'path';
 
-// Winston logger configuration
+/**
+ * Winston logger configuration
+ * 
+ * @returns The logger
+ */
 const logger = winston.createLogger({
     level: process.env['LOG_LEVEL'] || 'info',
     transports: [
@@ -28,7 +32,11 @@ const logger = winston.createLogger({
     ]
 });
 
-// Morgan stream for HTTP logging
+/**
+ * Morgan stream for HTTP logging
+ * 
+ * @returns The stream
+ */
 export const stream = {
     write: (message: string) => logger.http(message.trim())
 };

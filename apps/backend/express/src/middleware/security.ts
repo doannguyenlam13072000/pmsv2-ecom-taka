@@ -3,6 +3,8 @@ import { Request, Response, NextFunction } from 'express';
 
 /**
  * Configure helmet with security headers
+ * 
+ * @returns The helmet configuration
  */
 export const helmetConfig = helmet({
     // Content Security Policy
@@ -49,6 +51,10 @@ export const helmetConfig = helmet({
 
 /**
  * Custom security middleware for API routes
+ * 
+ * @param _req - The request object
+ * @param res - The response object
+ * @param next - The next function
  */
 export const apiSecurityMiddleware = (_req: Request, res: Response, next: NextFunction): void => {
     // Remove X-Powered-By header
@@ -65,6 +71,8 @@ export const apiSecurityMiddleware = (_req: Request, res: Response, next: NextFu
 
 /**
  * Development security middleware (less restrictive)
+ * 
+ * @returns The helmet configuration
  */
 export const devSecurityMiddleware = helmet({
     contentSecurityPolicy: false, // Disable CSP in development

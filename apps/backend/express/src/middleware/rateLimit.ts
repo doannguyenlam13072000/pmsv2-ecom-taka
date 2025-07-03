@@ -1,7 +1,11 @@
 import rateLimit from 'express-rate-limit';
 import { env } from '@/config';
 
-// Standard rate limiter for general API routes
+/**
+ * Standard rate limiter for general API routes
+ * 
+ * @returns The rate limiter
+ */
 export const standardLimiter = rateLimit({
     windowMs: env.RATE_LIMIT_WINDOW_MS, // 15 minutes
     max: env.RATE_LIMIT_MAX_REQUESTS, // 100 requests per window
@@ -21,7 +25,11 @@ export const standardLimiter = rateLimit({
     },
 });
 
-// Strict rate limiter for authentication routes
+/**
+ * Strict rate limiter for authentication routes
+ * 
+ * @returns The rate limiter
+ */
 export const authLimiter = rateLimit({
     windowMs: 15 * 60 * 1000, // 15 minutes
     max: 5, // 5 attempts per window
@@ -42,7 +50,11 @@ export const authLimiter = rateLimit({
     skipSuccessfulRequests: true, // Don't count successful requests
 });
 
-// Development rate limiter (more lenient)
+/**
+ * Development rate limiter (more lenient)
+ * 
+ * @returns The rate limiter
+ */
 export const devLimiter = rateLimit({
     windowMs: 60 * 1000, // 1 minute
     max: 1000, // 1000 requests per minute in development

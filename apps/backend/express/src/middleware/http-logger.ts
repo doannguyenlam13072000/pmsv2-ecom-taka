@@ -1,9 +1,13 @@
 import morgan from 'morgan';
 import { Request, Response, NextFunction } from 'express';
-import type { RequestHandler } from 'express';
-import { logger, stream } from '@/config';
+import { logger } from '@/config';
 
-// Helper function to filter sensitive data from request body
+/**
+ * Filter sensitive data from request body
+ * 
+ * @param obj - The object to filter
+ * @returns The filtered object
+ */
 const filterSensitiveData = (obj: any): any => {
     if (!obj || typeof obj !== 'object') return obj;
 
@@ -19,7 +23,12 @@ const filterSensitiveData = (obj: any): any => {
     return filtered;
 };
 
-// Helper function to extract browser information from user agent
+/**
+ * Extract browser information from user agent
+ * 
+ * @param userAgent - The user agent string
+ * @returns The browser information
+ */
 const extractBrowserInfo = (userAgent: string): string => {
     if (!userAgent || userAgent === 'unknown') return 'Unknown';
 
@@ -52,17 +61,34 @@ const extractBrowserInfo = (userAgent: string): string => {
     return userAgent.length > 50 ? `${userAgent.substring(0, 50)}...` : userAgent;
 };
 
-// Custom Morgan tokens
+/**
+ * Custom Morgan tokens
+ * 
+ * @param req - The request object
+ * @returns The body size
+ */
 morgan.token('body-size', (req: Request) => {
     const contentLength = req.headers['content-length'];
     return contentLength ? `${contentLength}B` : '0B';
 });
 
+/**
+ * Custom Morgan tokens
+ * 
+ * @param req - The request object
+ * @returns The user agent
+ */
 morgan.token('user-agent-short', (req: Request) => {
     const userAgent = req.headers['user-agent'] || '';
     return userAgent.length > 50 ? `${userAgent.substring(0, 50)}...` : userAgent;
 });
 
+/**
+ * Custom Morgan tokens
+ * 
+ * @param req - The request object
+ * @returns The body
+ */
 morgan.token('body', (req: Request) => {
     if (['POST', 'PUT', 'PATCH'].includes(req.method) && req.body) {
         const filteredBody = filterSensitiveData(req.body);
@@ -71,24 +97,13 @@ morgan.token('body', (req: Request) => {
     return '';
 });
 
-// Unified logging configuration
-const createMorganLogger = (format: string, skipHealth: boolean = true): RequestHandler => {
-    return morgan(format, {
-        stream,
-        skip: (req: Request, _res: Response) => {
-            if (skipHealth && req.url === '/health') return true;
-            return false;
-        }
-    });
-};
-
-// Development logging (always enabled)
-export const devMorgan: RequestHandler = createMorganLogger(':method :url :status :response-time ms - :body');
-
-// Production logging (always enabled)
-export const productionMorgan: RequestHandler = createMorganLogger(':method :url :status :response-time ms - :remote-addr - :user-agent-short - :body');
-
-// Custom API logger with start/end logging
+/**
+ * Custom API logger with start/end logging
+ * 
+ * @param req - The request object
+ * @param res - The response object
+ * @param next - The next function
+ */
 export const apiLogger = (req: Request, res: Response, next: NextFunction) => {
     const start = Date.now();
 
@@ -108,7 +123,7 @@ export const apiLogger = (req: Request, res: Response, next: NextFunction) => {
         bodyLog = `${JSON.stringify(filteredBody)}`;
     }
 
-    const startLog = `[${remoteAddr}] START [${originalMethod}] [${originalUrl}] [${browserInfo}] [${bodyLog}]`;
+    const startLog = `[${remoteAddr}] START [${originalMethod}] [${originalUrl}] [${browserInfo}] [Body: ${bodyLog}]`;
     logger.info(startLog);
 
     // 2. END: time ip end status status_message duration

@@ -35,6 +35,13 @@ interface EnvironmentConfig {
     BCRYPT_ROUNDS: number;
 }
 
+/**
+ * Get an environment variable
+ * 
+ * @param key - The key of the environment variable
+ * @param defaultValue - The default value if the environment variable is not set
+ * @returns The value of the environment variable
+ */
 function getEnvVar(key: string, defaultValue?: string): string {
     const value = process.env[key];
     if (!value && defaultValue === undefined) {
@@ -43,6 +50,13 @@ function getEnvVar(key: string, defaultValue?: string): string {
     return value || defaultValue!;
 }
 
+/**
+ * Get an environment variable as a number
+ * 
+ * @param key - The key of the environment variable
+ * @param defaultValue - The default value if the environment variable is not set
+ * @returns The value of the environment variable
+ */
 function getEnvVarAsNumber(key: string, defaultValue?: number): number {
     const value = getEnvVar(key, defaultValue?.toString());
     const num = parseInt(value, 10);
@@ -52,6 +66,14 @@ function getEnvVarAsNumber(key: string, defaultValue?: number): number {
     return num;
 }
 
+/**
+ * Get an environment variable as an enum
+ * 
+ * @param key - The key of the environment variable
+ * @param allowedValues - The allowed values for the environment variable
+ * @param defaultValue - The default value if the environment variable is not set
+ * @returns The value of the environment variable
+ */
 function getEnvVarAsEnum<T extends string>(
     key: string,
     allowedValues: readonly T[],
@@ -97,7 +119,11 @@ export const env: EnvironmentConfig = {
     BCRYPT_ROUNDS: getEnvVarAsNumber('BCRYPT_ROUNDS', 12),
 };
 
-// Validation function to ensure all required environment variables are set
+/**
+ * Validate the environment variables
+ * 
+ * @returns void
+ */
 export function validateEnv(): void {
     const requiredVars = [
         'DATABASE_URL',
@@ -112,7 +138,6 @@ export function validateEnv(): void {
     }
 }
 
-// Helper function to check if we're in development mode
 export const isDevelopment = env.NODE_ENV === 'development';
 export const isProduction = env.NODE_ENV === 'production';
 export const isTest = env.NODE_ENV === 'test'; 
