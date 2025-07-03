@@ -1,10 +1,18 @@
 import express from 'express';
 import { env, validateEnv } from '@/config';
+import { helmetConfig, devSecurityMiddleware } from '@/middleware';
 
 // Validate environment variables
 validateEnv();
 
 const app = express();
+
+// Apply security middleware based on environment
+if (env.NODE_ENV === 'production') {
+    app.use(helmetConfig);
+} else {
+    app.use(devSecurityMiddleware);
+}
 
 app.get('/', (_req, res) => {
     res.json({
