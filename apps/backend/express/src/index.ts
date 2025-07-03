@@ -1,6 +1,6 @@
 import express from 'express';
 import { env, validateEnv } from '@/config';
-import { helmetConfig, devSecurityMiddleware } from '@/middleware';
+import { helmetConfig, devSecurityMiddleware, standardLimiter, devLimiter } from '@/middleware';
 
 // Validate environment variables
 validateEnv();
@@ -12,6 +12,13 @@ if (env.NODE_ENV === 'production') {
     app.use(helmetConfig);
 } else {
     app.use(devSecurityMiddleware);
+}
+
+// Apply rate limiting based on environment
+if (env.NODE_ENV === 'production') {
+    app.use(standardLimiter);
+} else {
+    app.use(devLimiter);
 }
 
 app.get('/', (_req, res) => {
