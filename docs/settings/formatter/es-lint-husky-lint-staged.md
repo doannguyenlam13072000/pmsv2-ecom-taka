@@ -121,7 +121,7 @@ pnpm lint
 }
 ```
 
-### 7. Add lint:fix to turbo
+### 7. Add lint:fix to turbo (Optional)
 
 - Add this to `turbo.json`
 
@@ -135,7 +135,7 @@ pnpm lint
 }
 ```
 
-### 8. Add lint:fix to package.json
+### 8. Add lint:fix to package.json (Optional)
 
 - At root folder, add this to `package.json`
 
@@ -143,6 +143,40 @@ pnpm lint
 {
   "scripts": {
     "lint:fix": "turbo run lint:fix"
+  }
+}
+```
+
+### 9. Add lint:fix without turbo (Alternative)
+
+- If you're not using turbo or want a direct approach, add this to `package.json` at the specific app folder:
+
+```json
+{
+  "scripts": {
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix"
+  }
+}
+```
+
+- Or if you want to lint specific file types:
+
+```json
+{
+  "scripts": {
+    "lint": "eslint .",
+    "lint:fix": "eslint . --ext .js,.ts,.vue,.astro --fix"
+  }
+}
+```
+
+- For root package.json (if managing multiple apps without turbo):
+
+```json
+{
+  "scripts": {
+    "lint:fix": "pnpm --recursive exec eslint . --fix"
   }
 }
 ```
