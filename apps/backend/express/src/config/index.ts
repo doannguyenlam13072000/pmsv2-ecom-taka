@@ -1,4 +1,4 @@
-export * from './env';
-export { default as logger, stream } from './logger';
+export * from "./env";
+export { env as config } from "./env";
 
-export { env as config } from './env'; 
+export { default as logger, stream } from "./logger";

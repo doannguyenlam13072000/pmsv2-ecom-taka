@@ -8,7 +8,7 @@ The `.gitmessage` file provides a standardized format for git commit messages fo
 
 ### Format
 
-```
+```text
 [type][scope]: title
 ```
 
