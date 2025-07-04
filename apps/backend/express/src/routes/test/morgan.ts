@@ -40,7 +40,7 @@ router.get("/params/:id", validateParams(idParamSchema), (req: Request, res: Res
     success: true,
     message: "Params found",
     data: {
-      id: req.params.id,
+      id: req.params["id"],
       name: "Test Params",
     },
     timestamp: new Date().toISOString(),
@@ -55,9 +55,9 @@ router.get("/search", validateQuery(paginationQuerySchema), (req: Request, res: 
     success: true,
     message: "Search results",
     data: {
-      page: req.query.page || "1",
-      limit: req.query.limit || "10",
-      search: req.query.search,
+      page: req.query["page"] ?? "1",
+      limit: req.query["limit"] ?? "10",
+      search: req.query["search"],
       results: [
         { id: 1, name: "Item 1" },
         { id: 2, name: "Item 2" },

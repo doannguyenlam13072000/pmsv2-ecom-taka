@@ -7,7 +7,7 @@ import winston from "winston";
  * @returns The logger
  */
 const logger = winston.createLogger({
-  level: process.env.LOG_LEVEL || "info",
+  level: process.env["LOG_LEVEL"] || "info",
   transports: [
     // Console with colors
     new winston.transports.Console({

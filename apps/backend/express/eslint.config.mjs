@@ -24,6 +24,8 @@ export default antfu({
       case: "camelCase",
       ignore: ["README.md", "TODO.md", "tsconfig.json", "nodemon.json", "package.json"],
     }],
+    // Disable dot-notation rule to allow bracket notation for TypeScript strict mode
+    "dot-notation": "off",
     // Node.js specific rules
     "node/no-missing-import": "off", // TypeScript handles this
     "node/no-unsupported-features/es-syntax": "off", // We're using TypeScript
