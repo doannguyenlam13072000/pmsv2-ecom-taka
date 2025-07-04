@@ -1,16 +1,17 @@
-import express from 'express';
-import chalk from 'chalk';
-import { env, validateEnv, logger } from '@/config';
+import chalk from "chalk";
+import express from "express";
+
+import { env, logger, validateEnv } from "@/config";
 import {
-    helmetConfig,
-    devSecurityMiddleware,
-    standardLimiter,
-    devLimiter,
-    productionCors,
-    developmentCors,
-    apiLogger
-} from '@/middleware';
-import routes from '@/routes';
+  apiLogger,
+  developmentCors,
+  devLimiter,
+  devSecurityMiddleware,
+  helmetConfig,
+  productionCors,
+  standardLimiter,
+} from "@/middleware";
+import routes from "@/routes";
 
 // Validate environment variables
 validateEnv();
@@ -18,24 +19,27 @@ validateEnv();
 const app = express();
 
 // Apply CORS based on environment
-if (env.NODE_ENV === 'production') {
-    app.use(productionCors);
-} else {
-    app.use(developmentCors);
+if (env.NODE_ENV === "production") {
+  app.use(productionCors);
+}
+else {
+  app.use(developmentCors);
 }
 
 // Apply security middleware based on environment
-if (env.NODE_ENV === 'production') {
-    app.use(helmetConfig);
-} else {
-    app.use(devSecurityMiddleware);
+if (env.NODE_ENV === "production") {
+  app.use(helmetConfig);
+}
+else {
+  app.use(devSecurityMiddleware);
 }
 
 // Apply rate limiting based on environment
-if (env.NODE_ENV === 'production') {
-    app.use(standardLimiter);
-} else {
-    app.use(devLimiter);
+if (env.NODE_ENV === "production") {
+  app.use(standardLimiter);
+}
+else {
+  app.use(devLimiter);
 }
 
 // Parse JSON bodies
@@ -48,11 +52,11 @@ app.use(apiLogger);
 app.use(routes);
 
 app.listen(env.PORT, () => {
-    // Clear console for clean startup
-    console.clear();
+  // Clear console for clean startup
+  console.clear();
 
-    // Beautiful startup message with chalk colors
-    const startupMessage = chalk.greenBright(`
+  // Beautiful startup message with chalk colors
+  const startupMessage = chalk.greenBright(`
 ╔═══════════════════════════════════════════════╗
 ║                                               ║
 ║        🚀 Server is up and running!           ║
@@ -64,12 +68,12 @@ app.listen(env.PORT, () => {
 ╚═══════════════════════════════════════════════╝
 `);
 
-    // Display in console
-    console.log(startupMessage);
+  // Display in console
+  console.log(startupMessage);
 
-    // Log to Winston for file logging (without colors)
-    logger.info('🚀 Server is running on port ' + env.PORT + ' - ' + env.NODE_ENV + ' mode');
-    logger.info('Environment: ' + env.NODE_ENV);
-    logger.info('Port: ' + env.PORT);
-    logger.info('Database: Connected');
-}); 
+  // Log to Winston for file logging (without colors)
+  logger.info(`🚀 Server is running on port ${env.PORT} - ${env.NODE_ENV} mode`);
+  logger.info(`Environment: ${env.NODE_ENV}`);
+  logger.info(`Port: ${env.PORT}`);
+  logger.info("Database: Connected");
+});

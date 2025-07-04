@@ -1,4 +1,4 @@
+export * from "./auth.schema";
 // Export all schemas from individual files
-export * from './common.schema';
-export * from './auth.schema';
-export * from './test.schema';
+export * from "./common.schema";
+export * from "./test.schema";

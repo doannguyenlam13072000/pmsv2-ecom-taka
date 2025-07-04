@@ -6,34 +6,34 @@ A robust Express.js backend API with TypeScript, featuring comprehensive middlew
 
 ### Production Dependencies
 
-| Package | Version | Purpose |
-|---------|---------|---------|
-| `express` | ^5.1.0 | Web framework for Node.js |
-| `cors` | ^2.8.5 | Cross-Origin Resource Sharing middleware |
-| `helmet` | ^8.1.0 | Security middleware for Express |
-| `express-rate-limit` | ^7.5.1 | Rate limiting middleware |
-| `morgan` | ^1.10.0 | HTTP request logger middleware |
-| `winston` | ^3.17.0 | Logging library |
-| `zod` | ^3.25.67 | TypeScript-first schema validation |
-| `dotenv` | ^17.0.1 | Environment variables loader |
-| `dayjs` | ^1.11.13 | Modern date utility library |
-| `lodash` | ^4.17.21 | JavaScript utility library |
-| `chalk` | 4 | Terminal string styling |
+| Package              | Version  | Purpose                                  |
+| -------------------- | -------- | ---------------------------------------- |
+| `express`            | ^5.1.0   | Web framework for Node.js                |
+| `cors`               | ^2.8.5   | Cross-Origin Resource Sharing middleware |
+| `helmet`             | ^8.1.0   | Security middleware for Express          |
+| `express-rate-limit` | ^7.5.1   | Rate limiting middleware                 |
+| `morgan`             | ^1.10.0  | HTTP request logger middleware           |
+| `winston`            | ^3.17.0  | Logging library                          |
+| `zod`                | ^3.25.67 | TypeScript-first schema validation       |
+| `dotenv`             | ^17.0.1  | Environment variables loader             |
+| `dayjs`              | ^1.11.13 | Modern date utility library              |
+| `lodash`             | ^4.17.21 | JavaScript utility library               |
+| `chalk`              | 4        | Terminal string styling                  |
 
 ### Development Dependencies
 
-| Package | Version | Purpose |
-|---------|---------|---------|
-| `typescript` | ^5.8.3 | TypeScript compiler |
-| `@types/node` | ^20.12.5 | TypeScript definitions for Node.js |
-| `@types/express` | ^5.0.3 | TypeScript definitions for Express |
-| `@types/cors` | ^2.8.19 | TypeScript definitions for CORS |
-| `@types/morgan` | ^1.9.10 | TypeScript definitions for Morgan |
-| `@types/lodash` | ^4.17.20 | TypeScript definitions for Lodash |
-| `nodemon` | ^3.1.10 | Development server with auto-restart |
-| `ts-node` | ^10.9.2 | TypeScript execution engine |
-| `ts-node-dev` | ^2.0.0 | TypeScript development server |
-| `tsconfig-paths` | ^4.2.0 | TypeScript path mapping |
+| Package          | Version  | Purpose                              |
+| ---------------- | -------- | ------------------------------------ |
+| `typescript`     | ^5.8.3   | TypeScript compiler                  |
+| `@types/node`    | ^20.12.5 | TypeScript definitions for Node.js   |
+| `@types/express` | ^5.0.3   | TypeScript definitions for Express   |
+| `@types/cors`    | ^2.8.19  | TypeScript definitions for CORS      |
+| `@types/morgan`  | ^1.9.10  | TypeScript definitions for Morgan    |
+| `@types/lodash`  | ^4.17.20 | TypeScript definitions for Lodash    |
+| `nodemon`        | ^3.1.10  | Development server with auto-restart |
+| `ts-node`        | ^10.9.2  | TypeScript execution engine          |
+| `ts-node-dev`    | ^2.0.0   | TypeScript development server        |
+| `tsconfig-paths` | ^4.2.0   | TypeScript path mapping              |
 
 ## 🏗️ Project Structure
 

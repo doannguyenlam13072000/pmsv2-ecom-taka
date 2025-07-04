@@ -13,6 +13,10 @@
     "test": "turbo run test",
     "lint": "turbo run lint",
     "lint:fix": "turbo run lint:fix",
+    "lint:express": "turbo run lint --filter=express",
+    "lint:vue": "turbo run lint --filter=vue-app",
+    "lint:fix:express": "turbo run lint:fix --filter=express",
+    "lint:fix:vue": "turbo run lint:fix --filter=vue-app",
     "build": "turbo run build",
     "build:packages": "turbo run build --filter=@luxubu/packages-*",
     "build:apis": "turbo run build --filter=@luxubu/packages-apis",
@@ -39,6 +43,7 @@
     "vite": "^6.3.2"
   },
   "lint-staged": {
-    "apps/frontend/vue/**/*": "pnpm --filter vue-app lint"
+    "apps/frontend/vue/**/*": "pnpm --filter vue-app lint",
+    "apps/backend/express/**/*": "pnpm --filter express lint"
   }
 }
