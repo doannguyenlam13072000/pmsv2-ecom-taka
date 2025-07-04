@@ -1,8 +1,9 @@
 import { Router } from "express";
 
+import morganRoutes from "./morgan";
+
 import { env } from "@/config";
 
-import morganRoutes from "./morgan";
 
 const router: Router = Router();
 

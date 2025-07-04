@@ -53,6 +53,7 @@ app.use(routes);
 
 app.listen(env.PORT, () => {
   // Clear console for clean startup
+  // eslint-disable-next-line no-console
   console.clear();
 
   // Beautiful startup message with chalk colors
@@ -69,6 +70,7 @@ app.listen(env.PORT, () => {
 `);
 
   // Display in console
+  // eslint-disable-next-line no-console
   console.log(startupMessage);
 
   // Log to Winston for file logging (without colors)

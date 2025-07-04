@@ -1,11 +1,11 @@
 import type { Request, Response } from "express";
-
 import { Router } from "express";
 
-import { env } from "@/config";
 
 import testRoutes from "./test";
 import v1Routes from "./v1";
+
+import { env } from "@/config";
 
 const router: Router = Router();
 
