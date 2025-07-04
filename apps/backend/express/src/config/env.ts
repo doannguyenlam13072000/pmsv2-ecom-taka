@@ -1,5 +1,6 @@
-import dotenv from "dotenv";
 import path from "node:path";
+
+import dotenv from "dotenv";
 
 // Load environment variables from .env file
 dotenv.config({ path: path.resolve(process.cwd(), ".env") });

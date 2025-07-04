@@ -1,7 +1,13 @@
 import type { NextFunction, Request, Response } from "express";
 import type { ZodSchema } from "zod";
-
 import { z } from "zod";
+
+// Extend Request interface to include validated properties
+interface ValidatedRequest extends Request {
+  validatedBody?: unknown;
+  validatedParams?: unknown;
+  validatedQuery?: unknown;
+}
 
 /**
  * Simple validation middleware for body
@@ -10,11 +16,11 @@ import { z } from "zod";
  * @returns The validation middleware
  */
 export function validateBody(schema: ZodSchema) {
-  return (req: Request, res: Response, next: NextFunction): void => {
+  return (req: ValidatedRequest, res: Response, next: NextFunction): void => {
     try {
       const validatedBody = schema.parse(req.body);
       // Add validated body to request object
-      (req as any).validatedBody = validatedBody;
+      req.validatedBody = validatedBody;
       next();
     }
     catch (error) {
@@ -41,11 +47,11 @@ export function validateBody(schema: ZodSchema) {
  * @returns The validation middleware
  */
 export function validateParams(schema: ZodSchema) {
-  return (req: Request, res: Response, next: NextFunction): void => {
+  return (req: ValidatedRequest, res: Response, next: NextFunction): void => {
     try {
       const validatedParams = schema.parse(req.params);
       // Add validated params to request object
-      (req as any).validatedParams = validatedParams;
+      req.validatedParams = validatedParams;
       next();
     }
     catch (error) {
@@ -72,11 +78,11 @@ export function validateParams(schema: ZodSchema) {
  * @returns The validation middleware
  */
 export function validateQuery(schema: ZodSchema) {
-  return (req: Request, res: Response, next: NextFunction): void => {
+  return (req: ValidatedRequest, res: Response, next: NextFunction): void => {
     try {
       const validatedQuery = schema.parse(req.query);
       // Add validated query to request object
-      (req as any).validatedQuery = validatedQuery;
+      req.validatedQuery = validatedQuery;
       next();
     }
     catch (error) {

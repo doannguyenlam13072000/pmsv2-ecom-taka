@@ -1,5 +1,4 @@
 import type { NextFunction, Request, Response } from "express";
-
 import morgan from "morgan";
 
 import { logger } from "@/config";
@@ -10,7 +9,7 @@ import { logger } from "@/config";
  * @param obj - The object to filter
  * @returns The filtered object
  */
-function filterSensitiveData(obj: any): any {
+function filterSensitiveData(obj: Record<string, unknown> | null | undefined): Record<string, unknown> | null | undefined {
   if (!obj || typeof obj !== "object")
     return obj;
 
