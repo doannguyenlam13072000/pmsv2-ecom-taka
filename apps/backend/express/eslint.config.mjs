@@ -63,7 +63,7 @@ export default [
         },
       ],
       "import/no-unresolved": "off",
-      "import/no-extraneous-dependencies": ["error", { devDependencies: true }],
+      "import/no-extraneous-dependencies": "off",
 
       // Node rules
       "node/no-unsupported-features/es-syntax": "off",

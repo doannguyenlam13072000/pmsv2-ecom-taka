@@ -135,7 +135,7 @@ export function apiLogger(req: Request, res: Response, next: NextFunction) {
     const status = res.statusCode;
     const statusMessage = status >= 400 ? "ERROR" : status >= 300 ? "REDIRECT" : "SUCCESS";
 
-    const endLog = `[${remoteAddr}] END   [${originalMethod}] [${originalUrl}] [${status}] [${statusMessage}] [${duration}ms]`;
+    const endLog = `[${remoteAddr}] END [${originalMethod}] [${originalUrl}] [${status}] [${statusMessage}] [${duration}ms]`;
 
     // Use appropriate log level based on status
     if (status >= 500) {

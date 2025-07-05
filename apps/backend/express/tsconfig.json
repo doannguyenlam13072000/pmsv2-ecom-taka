@@ -5,7 +5,7 @@
       "ES2022"
     ],
     "baseUrl": "./src",
-    "rootDir": "./src",
+    "rootDir": "./",
     "module": "commonjs",
     "paths": {
       "@/*": [
@@ -62,7 +62,8 @@
     "skipLibCheck": true
   },
   "include": [
-    "src/**/*"
+    "src/**/*",
+    "prisma/**/*"
   ],
   "exclude": [
     "node_modules",

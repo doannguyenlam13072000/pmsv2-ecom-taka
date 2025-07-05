@@ -2,6 +2,9 @@ import type { NextFunction, Request, Response } from "express";
 import type { ZodSchema } from "zod";
 import { z } from "zod";
 
+import { HTTP_CODE } from "@/constants/httpCode";
+import { validationError } from "@/utils/response";
+
 // Extend Request interface to include validated properties
 interface ValidatedRequest extends Request {
   validatedBody?: unknown;
@@ -25,14 +28,14 @@ export function validateBody(schema: ZodSchema) {
     }
     catch (error) {
       if (error instanceof z.ZodError) {
-        res.status(400).json({
-          success: false,
-          message: "Validation failed",
-          errors: error.errors.map(err => ({
-            field: err.path.join("."),
-            message: err.message,
-          })),
-        });
+        const validationErrors = error.errors.map(err => ({
+          field: err.path.join("."),
+          message: err.message,
+        }));
+
+        res.status(HTTP_CODE.BAD_REQUEST).json(
+          validationError(validationErrors, "BODY_VALIDATION_FAILED")
+        );
         return;
       }
       next(error);
@@ -56,14 +59,14 @@ export function validateParams(schema: ZodSchema) {
     }
     catch (error) {
       if (error instanceof z.ZodError) {
-        res.status(400).json({
-          success: false,
-          message: "Validation failed",
-          errors: error.errors.map(err => ({
-            field: err.path.join("."),
-            message: err.message,
-          })),
-        });
+        const validationErrors = error.errors.map(err => ({
+          field: err.path.join("."),
+          message: err.message,
+        }));
+
+        res.status(HTTP_CODE.BAD_REQUEST).json(
+          validationError(validationErrors, "PARAMS_VALIDATION_FAILED")
+        );
         return;
       }
       next(error);
@@ -87,14 +90,14 @@ export function validateQuery(schema: ZodSchema) {
     }
     catch (error) {
       if (error instanceof z.ZodError) {
-        res.status(400).json({
-          success: false,
-          message: "Validation failed",
-          errors: error.errors.map(err => ({
-            field: err.path.join("."),
-            message: err.message,
-          })),
-        });
+        const validationErrors = error.errors.map(err => ({
+          field: err.path.join("."),
+          message: err.message,
+        }));
+
+        res.status(HTTP_CODE.BAD_REQUEST).json(
+          validationError(validationErrors, "QUERY_VALIDATION_FAILED")
+        );
         return;
       }
       next(error);

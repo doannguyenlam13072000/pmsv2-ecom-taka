@@ -10,7 +10,7 @@ import { env } from "@/config";
 const router: Router = Router();
 
 // API Routes with versioning
-router.use("/api/v1", v1Routes);
+router.use("/v1", v1Routes);
 
 // Test Routes (for testing configurations)
 router.use("/test", testRoutes);
