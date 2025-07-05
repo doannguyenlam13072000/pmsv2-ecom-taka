@@ -2,10 +2,8 @@ import { Router } from "express";
 
 const router: Router = Router();
 
-// TODO: Add feature routes here
-// router.use('/users', userRoutes);
-// router.use('/auth', authRoutes);
-// router.use('/products', productRoutes);
-// router.use('/orders', orderRoutes);
+import accountRoute from "@/modules/account/account.route";
+
+router.use('/accounts', accountRoute)
 
 export default router;

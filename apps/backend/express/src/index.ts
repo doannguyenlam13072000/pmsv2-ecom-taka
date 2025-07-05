@@ -1,13 +1,17 @@
 import chalk from "chalk";
 import express from "express";
 
+import { testDatabaseConnection } from "./config/database";
+
 import { env, logger, validateEnv } from "@/config";
 import {
   apiLogger,
   developmentCors,
   devLimiter,
   devSecurityMiddleware,
+  errorHandler,
   helmetConfig,
+  notFoundHandler,
   productionCors,
   standardLimiter,
 } from "@/middleware";
@@ -49,12 +53,20 @@ app.use(express.json());
 app.use(apiLogger);
 
 // All Routes (centralized)
-app.use(routes);
+app.use("/api", routes);
 
-app.listen(env.PORT, () => {
+// 404 handler - must be after all routes
+app.use(notFoundHandler);
+
+// Global error handler - must be last
+app.use(errorHandler);
+
+app.listen(env.PORT, async () => {
   // Clear console for clean startup
   // eslint-disable-next-line no-console
   console.clear();
+
+  const dbStatus = await testDatabaseConnection();
 
   // Beautiful startup message with chalk colors
   const startupMessage = chalk.greenBright(`
@@ -65,7 +77,7 @@ app.listen(env.PORT, () => {
 ╠═══════════════════════════════════════════════╣
   🌐  Environment : ${chalk.yellow(env.NODE_ENV)}           
   📍  Port        : ${chalk.cyan(env.PORT)}             
-  💾  DB Status   : ${chalk.green("Connected")}                
+  💾  DB Status   : ${dbStatus ? chalk.green("Connected") : chalk.red("Disconnected")}                
 ╚═══════════════════════════════════════════════╝
 `);
 
@@ -77,5 +89,10 @@ app.listen(env.PORT, () => {
   logger.info(`🚀 Server is running on port ${env.PORT} - ${env.NODE_ENV} mode`);
   logger.info(`Environment: ${env.NODE_ENV}`);
   logger.info(`Port: ${env.PORT}`);
-  logger.info("Database: Connected");
+  if (dbStatus) {
+    logger.info("Database: Connected");
+  }
+  else {
+    logger.error("Database: Disconnected");
+  }
 });

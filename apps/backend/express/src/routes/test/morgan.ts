@@ -2,7 +2,7 @@ import type { Request, Response } from "express";
 import { Router } from "express";
 
 import { validateBody, validateParams, validateQuery } from "@/middleware";
-import { idParamSchema, paginationQuerySchema, testBodySchema } from "@/validators";
+import { idSchema, paginationSchema, testBodySchema } from "@/validators";
 
 const router: Router = Router();
 
@@ -34,7 +34,7 @@ router.post("/body", validateBody(testBodySchema), (req: Request, res: Response)
 /**
  * Test GET with params validation
  */
-router.get("/params/:id", validateParams(idParamSchema), (req: Request, res: Response) => {
+router.get("/params/:id", validateParams(idSchema), (req: Request, res: Response) => {
   res.json({
     success: true,
     message: "Params found",
@@ -49,7 +49,7 @@ router.get("/params/:id", validateParams(idParamSchema), (req: Request, res: Res
 /**
  * Test GET with query validation
  */
-router.get("/search", validateQuery(paginationQuerySchema), (req: Request, res: Response) => {
+router.get("/search", validateQuery(paginationSchema), (req: Request, res: Response) => {
   res.json({
     success: true,
     message: "Search results",
@@ -81,7 +81,7 @@ router.get("/error", (_req: Request, res: Response) => {
 /**
  * Test DELETE with params validation
  */
-router.delete("/delete/:id", validateParams(idParamSchema), (_req: Request, res: Response) => {
+router.delete("/delete/:id", validateParams(idSchema), (_req: Request, res: Response) => {
   res.status(204).json();
 });
 
