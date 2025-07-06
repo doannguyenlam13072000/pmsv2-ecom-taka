@@ -81,7 +81,6 @@ app.listen(env.PORT, async () => {
 ╚═══════════════════════════════════════════════╝
 `);
 
-  // Display in console
   // eslint-disable-next-line no-console
   console.log(startupMessage);
 

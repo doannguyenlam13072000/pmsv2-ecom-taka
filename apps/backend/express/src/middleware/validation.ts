@@ -3,7 +3,8 @@ import type { ZodSchema } from "zod";
 import { z } from "zod";
 
 import { HTTP_CODE } from "@/constants/httpCode";
-import { validationError } from "@/utils/response";
+import { ApiError } from "@/utils/errors";
+import { COMMON_MESSAGES, ERROR_CODES } from "@/constants/messages";
 
 // Extend Request interface to include validated properties
 interface ValidatedRequest extends Request {
@@ -28,14 +29,23 @@ export function validateBody(schema: ZodSchema) {
     }
     catch (error) {
       if (error instanceof z.ZodError) {
+        console.log(error.errors)
         const validationErrors = error.errors.map(err => ({
           field: err.path.join("."),
           message: err.message,
         }));
 
-        res.status(HTTP_CODE.BAD_REQUEST).json(
-          validationError(validationErrors, "BODY_VALIDATION_FAILED")
+        const apiError = ApiError.validation(
+          COMMON_MESSAGES.VALIDATION_FAILED,
+          ERROR_CODES.BODY_VALIDATION_FAILED,
+          {
+            metaData: { validationErrors },
+            resources: [req.originalUrl],
+            method: req.method,
+            path: req.originalUrl,
+          }
         );
+        res.status(HTTP_CODE.BAD_REQUEST).json(apiError.toResponse());
         return;
       }
       next(error);
@@ -64,9 +74,16 @@ export function validateParams(schema: ZodSchema) {
           message: err.message,
         }));
 
-        res.status(HTTP_CODE.BAD_REQUEST).json(
-          validationError(validationErrors, "PARAMS_VALIDATION_FAILED")
+        const apiError = ApiError.validation(
+          COMMON_MESSAGES.VALIDATION_FAILED,
+          ERROR_CODES.PARAMS_VALIDATION_FAILED,
+          {
+            metaData: { validationErrors },
+            resources: [req.originalUrl],
+            method: req.method,
+          }
         );
+        res.status(HTTP_CODE.BAD_REQUEST).json(apiError.toResponse());
         return;
       }
       next(error);
@@ -95,9 +112,16 @@ export function validateQuery(schema: ZodSchema) {
           message: err.message,
         }));
 
-        res.status(HTTP_CODE.BAD_REQUEST).json(
-          validationError(validationErrors, "QUERY_VALIDATION_FAILED")
+        const apiError = ApiError.validation(
+          COMMON_MESSAGES.VALIDATION_FAILED,
+          ERROR_CODES.QUERY_VALIDATION_FAILED,
+          {
+            metaData: { validationErrors },
+            resources: [req.originalUrl],
+            method: req.method,
+          }
         );
+        res.status(HTTP_CODE.BAD_REQUEST).json(apiError.toResponse());
         return;
       }
       next(error);

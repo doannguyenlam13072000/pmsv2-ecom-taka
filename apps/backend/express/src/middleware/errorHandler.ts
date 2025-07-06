@@ -1,6 +1,9 @@
 import type { NextFunction, Request, Response } from "express";
 
 import { logger } from "@/config";
+import { ApiError } from "@/utils/errors";
+import { HTTP_CODE } from "@/constants/httpCode";
+import { COMMON_MESSAGES, ERROR_CODES } from "@/constants/messages";
 
 /**
  * Global error handling middleware
@@ -11,20 +14,25 @@ export function errorHandler(
     res: Response,
     _next: NextFunction
 ): void {
-    // Log the error
     logger.error(`[${req.method}] ${req.originalUrl} - ${error.message}`);
 
-    // Send error response
-    res.status(500).json({
-        success: false,
-        message: error.message || "Internal Server Error",
-        error: {
-            code: "INTERNAL_ERROR",
-            details: process.env["NODE_ENV"] === "development" ? error.stack : undefined,
-        },
-        timestamp: new Date().toISOString(),
-        path: req.originalUrl,
-    });
+    let apiError: ApiError;
+
+    if (error instanceof ApiError) {
+        apiError = error;
+    } else {
+        apiError = ApiError.internal(
+            error.message,
+            ERROR_CODES.INTERNAL_ERROR,
+            {
+                stack: error.stack ?? "No stack trace available",
+                path: req.originalUrl,
+                method: req.method,
+            }
+        );
+    }
+
+    res.status(apiError.statusCode).json(apiError.toResponse());
 }
 
 /**
@@ -33,13 +41,13 @@ export function errorHandler(
 export function notFoundHandler(req: Request, res: Response): void {
     logger.warn(`[${req.method}] ${req.originalUrl} - Route not found`);
 
-    res.status(404).json({
-        success: false,
-        message: `Route ${req.originalUrl} not found`,
-        error: {
-            code: "NOT_FOUND",
-        },
-        timestamp: new Date().toISOString(),
-        path: req.originalUrl,
-    });
+    const apiError = ApiError.notFound(
+        COMMON_MESSAGES.NOT_FOUND,
+        ERROR_CODES.NOT_FOUND,
+        {
+            path: req.originalUrl,
+            method: req.method,
+        }
+    );
+    res.status(HTTP_CODE.NOT_FOUND).json(apiError.toResponse());
 } 

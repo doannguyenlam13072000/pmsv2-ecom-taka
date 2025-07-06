@@ -4,7 +4,7 @@ import prisma from "@/config/database";
 export class BaseRepository<T extends keyof typeof prisma> {
     constructor(protected readonly model: typeof prisma[T]) { }
 
-    async findById(id: number | bigint): Promise<unknown> {
+    async findById(id: number | bigint): Promise<T> {
         return (this.model as unknown as any).findUnique({
             where: { id, deletedAt: null }
         });

@@ -1,0 +1,216 @@
+---
+description: 
+globs: apps/backend/*
+alwaysApply: false
+---
+# Main Rules
+
+## General Conventions
+
+- Use TypeScript for strict typing across the entire backend.
+- Follow modular layered architecture for clean separation of concerns.
+- Use Zod for input validation and schema inference.
+- Apply repository pattern for all database interactions.
+- Maintain consistent error handling and logging using custom middleware and Winston.
+- Use environment variables validated via Zod for secure config loading.
+- Organize API routes by version (/api/v1) to support future expansion.
+- Keep business logic isolated in modules with a service layer.
+
+## Folder-Level Conventions
+
+- `src/config/`
+  - Central place for managing env variables, logger, and DB connection.
+  - Validate process.env using Zod (env.ts).
+
+- `src/constants/`
+  - Store application-wide constants (e.g., HTTP codes, messages, roles).
+
+  - Group related constants into files (httpCode.ts, messages.ts, roles.ts).
+
+- `src/middleware/`
+  - Create reusable middleware for:
+    - JWT authentication (authenticate.ts)
+
+    - Error handling (errorHandler.ts)
+
+    - Rate limiting (rateLimit.ts)
+
+    - CORS (cors.ts)
+
+    - Logging (httpLogger.ts)
+
+  - Input validation (validation.ts)
+
+- `src/modules/`
+  - One folder per business domain (e.g., account, support-worker, etc.)
+
+  - Follow this file convention per module:
+
+```
+module-name/
+    - `module.constant.ts`
+    - `module.ctrl.ts`       // Request handling
+    - `module.route.ts`      // Express routes
+    - `module.schema.ts`     // Zod input validation
+    - `module.service.ts`    // Business logic
+    - `module.types.ts`      // Internal types
+```
+
+- `src/repositories/`
+  - Base repository logic in base.repo.ts
+  - All database access is handled in *.repo.ts files
+  - Keep Prisma logic encapsulated away from controllers/services
+
+- `src/routes/`
+  - index.ts registers all global routes.
+  - Use versioning folder like v1/ to group routes.
+  - Do not mix business logic here — just route wiring.
+
+- `src/types/`
+  - Centralize reusable TypeScript interfaces & types for requests and responses.
+  - Organize as:
+    - `requests/`
+    - `responses/`
+
+- `src/utils/`
+  - Store reusable helper logic (e.g., date.ts, errors.ts, response.ts).
+  - Standardize API responses using response.ts.
+
+- `src/validators/`
+  - Global/shared Zod schemas.
+  - Split into files per feature or domain (e.g., common.schema.ts, test.schema.ts).
+
+## Prisma / Database Conventions
+
+- Define database schema in prisma/schema.prisma.
+- Use bigserial for primary keys.
+- Apply snake_case for all table and column names.
+- Include deleted_at timestamptz for soft delete support.
+- Store is_active in accounts for activation status.
+- Centralize all token-based actions in a tokens table (e.g., email verification, reset password).
+- Use prisma/seeds/ for data seeding scripts.
+- Avoid direct Prisma usage in controllers; use repository layer instead.
+
+## Code Style & Tooling Conventions
+
+### 📛 Naming Conventions
+
+- ✅ Files: Use kebab-case.ts (e.g. auth.controller.ts)
+- ✅ Folders: Use kebab-case/ (e.g. support-worker/)
+- ✅ Variables & Functions: Use camelCase (e.g. getUserById)
+- ✅ Types & Interfaces: Use PascalCase with I prefix only for interfaces from external sources (optional)
+- ✅ Constants: Use UPPER_SNAKE_CASE (e.g. JWT_EXPIRES_IN)
+✅ Environment Variables: Use UPPER_SNAKE_CASE (e.g. DATABASE_URL)
+
+### 💡 Logical Structure & Design Rules
+
+- ❌ Avoid else after return — use guard clauses
+- ✅ Good:
+
+``` typescript
+if (!user) return null;
+return user.name;
+```
+
+- ❌ Avoid nested conditionals
+- ✅ Good:
+
+``` typescript
+if (!isActive) return;
+
+if (isAdmin) {
+  // do something
+}
+```
+
+- ✅ Use early returns for validation or failure checks
+- ✅ One purpose per function — follow SRP (Single Responsibility Principle)
+- ✅ Use services for business logic, not controllers
+- ✅ Avoid logic in route handlers, delegate to controller → service → repository layers
+
+### 🚫 Anti-Patterns to Avoid
+
+- ❌ No any — use proper typings or unknown with validation
+- ❌ No magic numbers/strings — use constants from /src/constants
+- ❌ No long functions — break into smaller units (< 50 LOC is a good practice)
+- ❌ Don’t access req.body or req.params directly in services
+- ❌ Avoid deeply nested callbacks/promises — use async/await
+
+### ✅ Patterns to Follow
+
+- ✅ Use zod for validation of request data at the route/controller level
+- ✅ Use Prisma only inside repositories
+- ✅ Use dependency injection or parameter passing for services
+- ✅ Centralize error handling with custom error classes
+- ✅ Return consistent API responses using a response helper
+
+### 🧹 Clean Code Practices
+
+- ✅ Group imports:
+  - Built-ins
+  - External modules
+  - Internal modules
+  - Relative modules
+
+``` typescript
+import fs from "fs";
+import express from "express";
+
+import { logger } from "@/config/logger";
+import { AccountService } from "@/modules/account/account.service";
+```
+
+- ✅ Sort object keys when static:
+
+``` typescript
+const user = {
+  createdAt: new Date(),
+  email: "example@mail.com",
+  id: 1,
+  name: "John",
+};
+```
+
+- ✅ Log only meaningful information — never console.log sensitive data
+- ✅ Use winston for all logs
+- ✅ Use enums or literal types for restricted values
+
+### ⚙️ Tooling & Automation Rules
+
+- ✅ Use ESLint with:
+  - `@typescript-eslint`
+  - `eslint-plugin-security`
+  - `eslint-plugin-import`
+  - `eslint-plugin-unused-imports`
+
+- ✅ Enable automatic fixes via:
+
+``` bash
+pnpm lint:fix
+```
+
+- ✅ Ignore: dist/, node_modules/, .env, *.log, prisma/migrations/ in .eslintignore
+- ✅ Use tsconfig-paths to simplify imports:
+
+``` json
+{
+  "@modules/*": ["src/modules/*"]
+}
+```
+
+- ✅ No console.log in production code — use logger.info, logger.error, etc.
+- ✅ Use husky + lint-staged for:
+  - Pre-commit: Lint & type check
+  - Preventing bad commits
+
+## Security & Validation
+
+Use:
+
+- `helmet` for HTTP headers
+- `cors` for cross-origin
+- `express-rate-limit` to prevent brute force
+- `zod` for schema validation
+- Hash passwords using bcryptjs.
+- Secure sensitive routes with JWT in authenticate.ts.
+- Validate every request using centralized validation.ts middleware.

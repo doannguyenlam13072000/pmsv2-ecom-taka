@@ -34,6 +34,9 @@ type EnvironmentConfig = {
 
   // Security
   BCRYPT_ROUNDS: number;
+
+  // Internal API Security
+  MASTER_SECRET_KEY: string;
 };
 
 /**
@@ -98,9 +101,9 @@ export const env: EnvironmentConfig = {
   DATABASE_URL: getEnvVar("DATABASE_URL", "postgresql://username:password@localhost:5432/database_name"),
 
   // JWT Configuration
-  JWT_SECRET: getEnvVar("JWT_SECRET", "your-super-secret-jwt-key-change-this-in-production"),
+  JWT_SECRET: getEnvVar("JWT_SECRET", "default-jwt-secret"),
   JWT_EXPIRES_IN: getEnvVar("JWT_EXPIRES_IN", "7d"),
-  JWT_REFRESH_SECRET: getEnvVar("JWT_REFRESH_SECRET", "your-super-secret-refresh-key-change-this-in-production"),
+  JWT_REFRESH_SECRET: getEnvVar("JWT_REFRESH_SECRET", "default-refresh-secret"),
   JWT_REFRESH_EXPIRES_IN: getEnvVar("JWT_REFRESH_EXPIRES_IN", "30d"),
 
   // Rate Limiting
@@ -118,6 +121,9 @@ export const env: EnvironmentConfig = {
 
   // Security
   BCRYPT_ROUNDS: getEnvVarAsNumber("BCRYPT_ROUNDS", 12),
+
+  // Internal API Security
+  MASTER_SECRET_KEY: getEnvVar("MASTER_SECRET_KEY", "change-this-master-secret-in-production"),
 };
 
 export function validateEnv(): void {

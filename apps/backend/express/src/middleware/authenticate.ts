@@ -3,7 +3,7 @@ import jwt from 'jsonwebtoken';
 
 import { env } from '@/config';
 import { logger } from '@/config';
-import { AuthenticationError } from '@/utils/errors';
+import { ApiError } from '@/utils/errors';
 
 // Extend Request interface to include user
 declare global {
@@ -31,14 +31,14 @@ export const authenticate = (req: Request, res: Response, next: NextFunction) =>
 
         if (!authHeader || !authHeader.startsWith('Bearer ')) {
             logger.warn('Authentication failed: No Bearer token provided');
-            throw new AuthenticationError('No token provided');
+            throw ApiError.unauthorized('No token provided');
         }
 
         const token = authHeader.substring(7); // Remove 'Bearer ' prefix
 
         if (!token) {
             logger.warn('Authentication failed: Empty token');
-            throw new AuthenticationError('Invalid token format');
+            throw ApiError.unauthorized('Invalid token format');
         }
 
         // Verify JWT token
@@ -50,7 +50,7 @@ export const authenticate = (req: Request, res: Response, next: NextFunction) =>
 
         if (!decoded || !decoded.id || !decoded.role) {
             logger.warn('Authentication failed: Invalid token payload');
-            throw new AuthenticationError('Invalid token payload');
+            throw ApiError.unauthorized('Invalid token payload');
         }
 
         // Attach user to request
@@ -64,11 +64,8 @@ export const authenticate = (req: Request, res: Response, next: NextFunction) =>
         return next();
 
     } catch (error) {
-        if (error instanceof AuthenticationError) {
-            return res.status(401).json({
-                success: false,
-                message: error.message
-            });
+        if (error instanceof ApiError) {
+            return res.status(error.statusCode).json(error.toResponse());
         }
 
         if (error instanceof jwt.JsonWebTokenError) {

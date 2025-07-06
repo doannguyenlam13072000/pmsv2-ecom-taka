@@ -12,6 +12,6 @@
   "env": {
     "NODE_ENV": "development"
   },
-  "delay": "1000",
+  "delay": "500",
   "verbose": true
 }

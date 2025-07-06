@@ -1,4 +1,9 @@
+import { ACCOUNT_ERROR_CODES, ACCOUNT_MESSAGES } from "./account.constant";
+
 import { AccountRepository } from "@/repositories/account.repo";
+import { AccountWithRole } from "@/types/entities/Account";
+import { ApiError } from "@/utils/errors";
+
 
 export class AccountService {
     private readonly accountRepository: AccountRepository;
@@ -7,43 +12,13 @@ export class AccountService {
         this.accountRepository = new AccountRepository();
     }
 
-    /**
-     * Create a new account
-     * 
-     * @param data 
-     * @returns 
-     */
-    async createAccount(data: Record<string, unknown>): Promise<unknown> {
-        return this.accountRepository.create(data);
-    }
+    async getAccountByEmail(email: string): Promise<AccountWithRole> {
+        const account = await this.accountRepository.findByEmail(email);
 
-    /**
-     * Find an account by ID
-     * 
-     * @param id 
-     * @returns 
-     */
-    async findAccountById(id: number | bigint): Promise<unknown> {
-        return this.accountRepository.findById(id);
-    }
+        if (!account) {
+            throw ApiError.notFound(ACCOUNT_MESSAGES.NOT_FOUND, ACCOUNT_ERROR_CODES.NOT_FOUND);
+        }
 
-    /**
-     * Find an account by email
-     * 
-     * @param email 
-     * @returns 
-     */
-    async findAccountByEmail(email: string): Promise<unknown> {
-        return this.accountRepository.findByEmail(email);
-    }
-
-    /**
-     * Find an account by username
-     * 
-     * @param username 
-     * @returns 
-     */
-    async findAccountByUsername(username: string): Promise<unknown> {
-        return this.accountRepository.findByUsername(username);
+        return account;
     }
 }
