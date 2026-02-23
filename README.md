@@ -1,11 +1,13 @@
 # My_Projects
 
 ## Overview
+
 A monorepo containing multiple applications, packages, infrastructure, and tools for development and deployment. It leverages Node.js and modern CI/CD workflows.
 
 ## Project Structure
 
-```
+``` text
+
 My_Projects/
 ├── .git/                   # Git repository metadata
 ├── .github/                # GitHub configs & workflows
@@ -48,6 +50,7 @@ My_Projects/
 ```
 
 ## CI/CD
+
 - Uses GitHub Actions with Node.js 18
 - Workflow runs on push/PR to main branch
 - Steps: npm install, test, build
