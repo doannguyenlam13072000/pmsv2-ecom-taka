@@ -12,3 +12,10 @@ export const words = [
     { text: "Problem Solver", article: "a", image: "images/problem-solver.svg" },
     { text: "Team Player", article: "a", image: "images/teamwork.svg" },
 ];
+
+export const counters = [
+    { title: "Years of Experience", suffix: "+", value: 4 },
+    { title: "Projects Completed", suffix: "+", value: 7 },
+    { title: "Clients Served", suffix: "+", value: 3000000 },
+    { title: "Markets Served", suffix: "+", value: 3 },
+];

@@ -171,6 +171,9 @@ importers:
       astro:
         specifier: ^5.17.1
         version: 5.17.3(@types/node@20.17.30)(jiti@2.6.1)(lightningcss@1.31.1)(rollup@4.40.0)(sass@1.87.0)(terser@5.39.0)(tsx@4.20.3)(typescript@5.8.3)(yaml@2.8.0)
+      countup.js:
+        specifier: ^2.9.0
+        version: 2.9.0
       gsap:
         specifier: ^3.14.2
         version: 3.14.2
@@ -3966,6 +3969,9 @@ packages:
   cors@2.8.5:
     resolution: {integrity: sha512-KIHbLJqu73RGr/hnbrO9uBeixNGuvSQjul/jdFvS/KFSIH1hWVd1ng7zOHx+YrEfInLG7q4n6GHQ9cDtxv/P6g==}
     engines: {node: '>= 0.10'}
+
+  countup.js@2.9.0:
+    resolution: {integrity: sha512-llqrvyXztRFPp6+i8jx25phHWcVWhrHO4Nlt0uAOSKHB8778zzQswa4MU3qKBvkXfJKftRYFJuVHez67lyKdHg==}
 
   create-require@1.1.1:
     resolution: {integrity: sha512-dcKFX3jn0MpIaXjisoRvexIJVEKzaq7z2rZKxf+MSr9TkdmHmsU4m2lcLojrj/FHl8mk5VxMmYA+ftRkP/3oKQ==}
@@ -12283,6 +12289,8 @@ snapshots:
     dependencies:
       object-assign: 4.1.1
       vary: 1.1.2
+
+  countup.js@2.9.0: {}
 
   create-require@1.1.1: {}
 
