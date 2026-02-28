@@ -3,7 +3,9 @@ import { counters } from "../../scripts/dummy";
 ---
 
 <section class="section-counter xl:mt-0 mt-32">
-  <div class="mx-auto container grid grid-cols-4 gap-4">
+  <div
+    class="mx-auto container grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4"
+  >
     {
       counters.map((counter, i) => (
         <div class="col-span-1 bg-card-bg rounded-lg p-6">

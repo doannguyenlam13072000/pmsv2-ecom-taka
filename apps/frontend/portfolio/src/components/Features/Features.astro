@@ -1,1 +1,25 @@
-Features
+---
+import { abilities } from "../../scripts/dummy";
+---
+
+<section class="features-section container mx-auto">
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+    {
+      abilities.map((ability) => (
+        <div class="feature-card rounded-2xl bg-card-bg p-4 space-y-2">
+          <img class="w-10 h-10" src={ability.image} alt={ability.title} />
+          <h3 class="text-lg md:text-xl lg:text-2xl text-headline font-semibold">
+            {ability.title}
+          </h3>
+          <p class="text-base md:text-lg text-paragraph font-normal">
+            {ability.description}
+          </p>
+        </div>
+      ))
+    }
+  </div>
+</section>
+
+<script>
+  import "./index.js";
+</script>

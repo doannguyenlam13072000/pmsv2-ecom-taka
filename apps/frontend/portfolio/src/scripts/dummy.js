@@ -58,3 +58,26 @@ export const otherSkills = [
     { name: "Bitbucket", image: "images/bitbucket.svg" },
     { name: "Figma", image: "images/figma.svg" },
 ]
+
+export const abilities = [
+    {
+        title: "Quick Learner",
+        description: "I adapt quickly to new technologies and continuously expand my skill set.",
+        image: "images/quick-learner.svg"
+    },
+    {
+        title: "Problem Solver",
+        description: "I analyze challenges effectively and deliver practical, well-structured solutions.",
+        image: "images/problem-solver-2.svg"
+    },
+    {
+        title: "On-Time Delivery",
+        description: "I consistently deliver high-quality projects on schedule and within scope.",
+        image: "images/on-time.svg"
+    },
+    {
+        title: "Effective Communication",
+        description: "I communicate clearly and collaborate efficiently with clients and team members.",
+        image: "images/communication.svg"
+    }
+]
