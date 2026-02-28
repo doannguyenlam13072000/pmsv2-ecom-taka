@@ -1,0 +1,86 @@
+---
+import "./style.css";
+import Skill from "./Skill.astro";
+import {
+  frontendSkills,
+  backendSkills,
+  databaseSkills,
+  devOpsSkills,
+  otherSkills,
+} from "../../scripts/dummy";
+---
+
+<section
+  class="skills-section container mx-auto space-y-8 bg-card-bg rounded-2xl p-8"
+>
+  <h1 class="xl:text-4xl text-2xl font-bold text-headline text-center">
+    What I Can Do
+  </h1>
+
+  <div class="skills-container">
+    <div class="skills-title">
+      <h2>Frontend</h2>
+    </div>
+    <div class="skills-list">
+      {
+        frontendSkills.map((skill) => (
+          <Skill name={skill.name} image={skill.image} />
+        ))
+      }
+    </div>
+  </div>
+
+  <div class="skills-container">
+    <div class="skills-title">
+      <h2>Backend</h2>
+    </div>
+    <div class="skills-list">
+      {
+        backendSkills.map((skill) => (
+          <Skill name={skill.name} image={skill.image} />
+        ))
+      }
+    </div>
+  </div>
+
+  <div class="skills-container">
+    <div class="skills-title">
+      <h2>Database</h2>
+    </div>
+    <div class="skills-list">
+      {
+        databaseSkills.map((skill) => (
+          <Skill name={skill.name} image={skill.image} />
+        ))
+      }
+    </div>
+  </div>
+
+  <div class="skills-container">
+    <div class="skills-title">
+      <h2>DevOps</h2>
+    </div>
+    <div class="skills-list">
+      {
+        devOpsSkills.map((skill) => (
+          <Skill name={skill.name} image={skill.image} />
+        ))
+      }
+    </div>
+  </div>
+
+  <div class="skills-container">
+    <div class="skills-title">
+      <h2>Others</h2>
+    </div>
+    <div class="skills-list">
+      {
+        otherSkills.map((skill) => (
+          <Skill name={skill.name} image={skill.image} />
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<script src="./index.js"></script>

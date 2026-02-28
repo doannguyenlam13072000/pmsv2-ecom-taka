@@ -19,3 +19,42 @@ export const counters = [
     { title: "Clients Served", suffix: "+", value: 3000000 },
     { title: "Markets Served", suffix: "+", value: 3 },
 ];
+
+export const frontendSkills = [
+    { name: "JS", image: "images/javascript.svg" },
+    { name: "Vue.js", image: "images/vuejs.svg" },
+    { name: "React.js", image: "images/reactjs.svg" },
+    { name: "Nuxt.js", image: "images/nuxt.svg" },
+    { name: "Angular", image: "images/angular.svg" },
+    { name: "Astro", image: "images/astro.svg" },
+]
+
+export const backendSkills = [
+    { name: "Node.js", image: "images/nodejs.svg" },
+    { name: "Express", image: "images/express.svg" },
+    { name: "Spring Boot", image: "images/springboot.svg" },
+    { name: "Laravel", image: "images/laravel.svg" },
+    { name: "Docker", image: "images/docker.svg" },
+    { name: "Strapi", image: "images/strapi.svg" },
+]
+
+export const databaseSkills = [
+    { name: "MySQL", image: "images/mysql.svg" },
+    { name: "PostgreSQL", image: "images/postgresql.svg" },
+    { name: "MongoDB", image: "images/mongodb.svg" },
+    { name: "Redis", image: "images/redis.svg" },
+]
+
+export const devOpsSkills = [
+    { name: "Docker", image: "images/docker.svg" },
+    { name: "AWS", image: "images/aws.svg" },
+    { name: "Hostinger", image: "images/hostinger.svg" },
+    { name: "CI/CD", image: "images/ci-cd.svg" },
+]
+
+export const otherSkills = [
+    { name: "Git", image: "images/git.svg" },
+    { name: "GitHub", image: "images/github.svg" },
+    { name: "Bitbucket", image: "images/bitbucket.svg" },
+    { name: "Figma", image: "images/figma.svg" },
+]

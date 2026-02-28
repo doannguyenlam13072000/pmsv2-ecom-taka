@@ -1,0 +1,29 @@
+.skills-section {
+    .skills-container {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+
+        .skills-title {
+            border-right: 4px solid var(--color-main);
+            height: 96px;
+            min-width: 120px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            h2 {
+                font-size: 1.5rem;
+                color: var(--color-main);
+            }
+        }
+
+
+        .skills-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            align-items: center;
+        }
+    }
+}
