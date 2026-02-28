@@ -83,5 +83,7 @@
     "scss",
     "pcss",
     "postcss"
-  ]
+  ],
+  "tailwindCSS.experimental.configFile": "apps/frontend/portfolio/src/styles/global.css",
+  "css.lint.unknownAtRules": "ignore"
 }

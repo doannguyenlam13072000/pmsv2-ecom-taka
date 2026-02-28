@@ -10,6 +10,14 @@
   },
   "dependencies": {
     "@astrojs/ts-plugin": "^1.10.6",
-    "astro": "^5.17.1"
+    "@splinetool/loader": "^1.12.61",
+    "@tailwindcss/vite": "^4.2.1",
+    "astro": "^5.17.1",
+    "gsap": "^3.14.2",
+    "tailwindcss": "^4.2.1",
+    "three": "0.150.1"
+  },
+  "devDependencies": {
+    "@types/three": "0.150.0"
   }
 }

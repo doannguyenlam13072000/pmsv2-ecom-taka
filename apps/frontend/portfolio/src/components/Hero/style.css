@@ -1,0 +1,246 @@
+/* Keyframes at root so animation runs (Astro/Vite) */
+@keyframes wordSlider {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    8.33% {
+        transform: translateY(-8.33%);
+    }
+
+    16.66% {
+        transform: translateY(-16.66%);
+    }
+
+    25% {
+        transform: translateY(-25%);
+    }
+
+    33.33% {
+        transform: translateY(-33.33%);
+    }
+
+    41.66% {
+        transform: translateY(-41.66%);
+    }
+
+    50% {
+        transform: translateY(-50%);
+    }
+
+    58.33% {
+        transform: translateY(-58.33%);
+    }
+
+    66.66% {
+        transform: translateY(-66.66%);
+    }
+
+    75% {
+        transform: translateY(-75%);
+    }
+
+    83.33% {
+        transform: translateY(-83.33%);
+    }
+
+    91.66% {
+        transform: translateY(-91.66%);
+    }
+}
+
+.hero-section {
+    .slide {
+        display: inline-block;
+        vertical-align: top;
+        height: 3rem;
+        /* one row: icon + text (match md:size-10 + padding) */
+        overflow: hidden;
+        transition: all cubic-bezier(0.71, 0.03, 0.34, 1);
+    }
+
+    .wrapper {
+        display: flex;
+        flex-direction: column;
+        animation: wordSlider 21s infinite cubic-bezier(0.9, 0.01, 0.03, 0.99);
+    }
+
+    .cta-btn {
+        position: absolute;
+        z-index: 0;
+        /* stacking context so .btn__shadow (z-index: -1) stays behind button, not behind section */
+        transition: transform .4s;
+        width: fit-content;
+
+        .btn__content {
+            position: relative;
+            background: var(--gradient-highlight);
+            padding: 1.25rem 3rem;
+            border-radius: 4rem;
+            border: 3px solid var(--color-stroke);
+            color: var(--color-main);
+            display: flex;
+            align-items: center;
+            column-gap: .5rem;
+            overflow: hidden;
+        }
+
+        .btn__text,
+        .btn__icon {
+            position: relative;
+            /* z-index: 2; */
+        }
+
+        .btn__reflection-1,
+        .btn__reflection-2 {
+            width: 8px;
+            height: 120px;
+            background: var(--reflection-color);
+            rotate: 30deg;
+            position: absolute;
+            inset: 0;
+            top: 0;
+            left: -180%;
+            margin: auto;
+            transition: left .6s cubic-bezier(.2, .5, .2, 1.2);
+        }
+
+        .btn__reflection-1::after {
+            content: '';
+            width: 26px;
+            height: 100%;
+            background: var(--reflection-color);
+            position: absolute;
+            top: -1rem;
+            left: 1.25rem;
+
+        }
+
+        .btn__reflection-2::after {
+            content: '';
+            width: 40px;
+            height: 100%;
+            background: var(--reflection-color);
+            position: absolute;
+            top: -1rem;
+            left: .8rem;
+
+        }
+
+        img {
+            position: absolute;
+            opacity: 0;
+            pointer-events: none;
+            transition: transform .5, opacity .5s;
+        }
+
+        .btn__star-1 {
+            width: 20px;
+            top: -14px;
+            left: -16px;
+            transform: rotate(45deg) scale(.1);
+        }
+
+        .btn__star-2 {
+            width: 40px;
+            top: -4px;
+            right: -10px;
+            transform: rotate(-45deg) scale(.1);
+        }
+
+        .btn__circle-1,
+        .btn__circle-2 {
+            width: 8px;
+        }
+
+        .btn__circle-1 {
+            top: -8px;
+            left: 54px;
+            transform: scale(.1);
+        }
+
+        .btn__circle-2 {
+            right: 34px;
+            bottom: -8px;
+            transform: scale(.1);
+        }
+
+        .btn__diamond {
+            width: 18px;
+            top: -18px;
+            right: 62px;
+            transform: scale(.1);
+        }
+
+        .btn__triangle {
+            width: 30px;
+            left: 15px;
+            bottom: -16px;
+            transform: rotate(-48deg) scale(.1);
+        }
+
+        .btn__shadow {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            left: 0;
+            top: 0;
+            background: var(--gradient-highlight);
+            padding: 1.25rem 3rem;
+            border-radius: 4rem;
+            border: 3px solid var(--color-stroke);
+            z-index: -1;
+            transition: transform .3s;
+        }
+
+        &:hover {
+            transform: rotate(-4deg) scale(1.1);
+        }
+
+        &:hover img {
+            opacity: 1;
+        }
+
+        &:hover .btn__star-1 {
+            transform: scale(1.1);
+            transition-delay: .1s;
+        }
+
+        &:hover .btn__star-2 {
+            transform: scale(1.1);
+        }
+
+        &:hover .btn__circle-1 {
+            transform: translateY(-8px) scale(1.1);
+            transition-delay: .1s;
+        }
+
+        &:hover .btn__circle-2 {
+            transform: translate(-20px, 20px) scale(1.1);
+        }
+
+        &:hover .btn__diamond {
+            transform: translateY(7px) rotate(-24deg) scale(1.1);
+        }
+
+        &:hover .btn__triangle {
+            transform: rotate(-12deg) scale(1.1);
+        }
+
+        &:hover .btn__shadow {
+            transform: translate(-.5rem, .5rem);
+        }
+
+        &:hover .btn__reflection-1 {
+            left: 120%;
+        }
+
+        &:hover .btn__reflection-2 {
+            left: -70%;
+        }
+
+
+    }
+}

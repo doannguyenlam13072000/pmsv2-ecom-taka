@@ -1,0 +1,105 @@
+---
+import { words } from "../../scripts/dummy";
+import "./style.css";
+---
+
+<section class="h-screen hero-section">
+  <div class="h-full container mx-auto grid grid-cols-12 gap-4 content-center">
+    <!-- Left side -->
+    <div class="col-span-6 space-y-4">
+      <div class="hero-text flex flex-col gap-4 justify-center">
+        <div class="title-container border-l-4 border-main pl-4">
+          <h1
+            class="text-xl md:text-2xl lg:text-4xl font-bold text-headline z-10 mb-6"
+          >
+            It's me,
+            <span class="text-highlight">Lam Doan</span>
+          </h1>
+
+          <h1
+            class="text-xl md:text-2xl lg:text-4xl font-bold text-headline z-10"
+          >
+            I'm
+            <span class="text-highlight">
+              <span class="slide">
+                <span class="wrapper">
+                  {
+                    words.map((word) => (
+                      <span class="flex items-center gap-2 pb-2">
+                        <span class="font-normal">{word.article}</span>
+                        <img
+                          class="xl:size-12 md:size-10 size-8"
+                          src={word.image}
+                          alt={word.text}
+                        />
+                        <span>{word.text}</span>
+                      </span>
+                    ))
+                  }
+                </span>
+              </span>
+            </span>
+          </h1>
+        </div>
+
+        <p
+          class="text-base lg:text-xl font-light pointer-events-none text-paragraph"
+        >
+          Senior Full-stack Engineer with 4+ years of experience building and
+          operating production-grade web applications for e-commerce, AI-
+          assisted platforms, and enterprise systems.
+        </p>
+
+        <p
+          class="text-base lg:text-xl font-light pointer-events-none text-paragraph"
+        >
+          Specialized in frontend-focused full-stack development using React,
+          Vue, TypeScript, and Node.js, with strong ownership in API design,
+          third- party integrations, and scalable backend workflows. Experienced
+          collaborating with international teams across US, Israeli, and
+          Japanese markets.
+        </p>
+      </div>
+
+      <div class="hero-cta relative">
+        <a href="/DoanNguyenLam.pdf" download class="cta-btn">
+          <div class="btn__content flex items-center gap-2">
+            <span class="btn__text text-base font-semibold"
+              >Download my resume</span
+            >
+            <span class="btn__icon">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="32"
+                height="32"
+                viewBox="0 0 32 32"
+                ><title>download</title><path
+                  fill="none"
+                  stroke="#ffffff"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M9 22c-9 1-8-10 0-9C6 2 23 2 22 10c10-3 10 13 1 12m-12 4l5 4l5-4m-5-10v14"
+                ></path></svg
+              >
+            </span>
+            <div class="btn__reflection-1"></div>
+            <div class="btn__reflection-2"></div>
+          </div>
+
+          <img src="images/star.png" alt="star" class="btn__star-1" />
+          <img src="images/star.png" alt="star" class="btn__star-2" />
+          <img src="images/circle.png" alt="circle" class="btn__circle-1" />
+          <img src="images/circle.png" alt="circle" class="btn__circle-2" />
+          <img src="images/triangle.png" alt="triangle" class="btn__triangle" />
+          <img src="images/diamond.png" alt="diamond" class="btn__diamond" />
+
+          <div class="btn__shadow"></div>
+        </a>
+      </div>
+    </div>
+
+    <!-- Right side: Spline / Three.js canvas -->
+    <div class="col-span-6"></div>
+  </div>
+</section>
