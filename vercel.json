@@ -1,0 +1,6 @@
+{
+  "installCommand": "cd apps/frontend/portfolio && npm install",
+  "buildCommand": "cd apps/frontend/portfolio && npm run build",
+  "outputDirectory": "apps/frontend/portfolio/dist",
+  "framework": null
+}
