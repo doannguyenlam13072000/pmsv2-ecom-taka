@@ -34,4 +34,27 @@
         width: 2px;
         background: #2cb67d;
     }
+
+    /* Mobile: show short connector below timeline node between stacked cards */
+    @media (max-width: 767px) {
+        .exp-card-wrapper .timeline-wrapper {
+            min-height: 2rem;
+        }
+
+        .exp-card-wrapper .timeline-wrapper::after {
+            content: "";
+            position: absolute;
+            left: 50%;
+            top: 2rem;
+            transform: translateX(-50%);
+            width: 2px;
+            height: 1.5rem;
+            background: #2cb67d;
+            z-index: 0;
+        }
+
+        .exp-card-wrapper:last-child .timeline-wrapper::after {
+            display: none;
+        }
+    }
 }

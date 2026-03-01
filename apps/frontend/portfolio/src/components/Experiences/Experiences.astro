@@ -14,27 +14,30 @@ import Project from "./Project.astro";
     />
   </div>
 
-  <div class="mt-32 relative">
-    <div class="relative z-50 space-y-8">
+  <div class="mt-12 md:mt-32 relative">
+    <div class="relative z-50 space-y-8 md:space-y-8">
       {
         projects.map((project) => (
-          <div class="exp-card-wrapper grid grid-cols-12">
-            <div class="col-span-5 py-4">
+          <div class="exp-card-wrapper grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-0">
+            <!-- GlowCard: full width on mobile, 5 cols on md+ -->
+            <div class="col-span-1 md:col-span-5 py-2 md:py-4 order-1 md:order-1">
               <GlowCard project={project} />
             </div>
 
-            <div class="col-span-1">
-              <div class="timeline-wrapper h-full relative">
+            <!-- Timeline: compact on mobile (centered node), full column on md+ -->
+            <div class="col-span-1 md:col-span-1 py-2 md:py-0 order-2 md:order-2 flex justify-center md:block">
+              <div class="timeline-wrapper h-full relative min-h-0 md:min-h-px">
                 <img
                   src={project.companyImage}
                   alt={project.company}
-                  class="w-8 h-8 absolute -top-10 left-1/2 -translate-x-1/2 z-10"
+                  class="w-8 h-8 absolute -top-2 md:-top-10 left-1/2 -translate-x-1/2 z-10 bg-card-bg rounded-full p-0.5"
                 />
-                <div class="gradient-line w-1 h-full absolute top-0 left-1/2 -translate-x-1/2 z-0" />
+                <div class="gradient-line w-1 h-full absolute top-0 left-1/2 -translate-x-1/2 z-0 hidden md:block" />
               </div>
             </div>
 
-            <div class="col-span-6 py-4">
+            <!-- Project: full width on mobile, 6 cols on md+ -->
+            <div class="col-span-1 md:col-span-6 py-2 md:py-4 order-3 md:order-3">
               <Project project={project} />
             </div>
           </div>
