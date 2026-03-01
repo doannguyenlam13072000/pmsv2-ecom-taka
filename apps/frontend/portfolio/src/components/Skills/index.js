@@ -57,12 +57,16 @@ function runSkillsAnimation() {
     });
 }
 
-// Title and skills animate independently (no chaining)
+// Skills animate independently (no chaining) — run once only (unobserve after first trigger so no reset on scroll back)
 const skillsSection = document.querySelector(sectionSelector);
-const mainTitleEl = document.querySelector(mainTitleSelector);
-if (mainTitleEl) {
-    observeViewport([mainTitleEl], runTitleAnimation, { threshold: 0.2 });
-}
+
 if (skillsSection) {
-    observeViewport([skillsSection], runSkillsAnimation, { threshold: 0.2 });
+    const skillsObs = observeViewport(
+        [skillsSection],
+        () => {
+            runSkillsAnimation();
+            skillsObs.unobserve(skillsSection);
+        },
+        { threshold: 0.2 }
+    );
 }

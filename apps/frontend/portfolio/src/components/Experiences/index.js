@@ -37,12 +37,12 @@ const masterTl = gsap.timeline({
     start: "top 85%",
     // Animation ends when the top of the trigger hits 25% down the viewport
     end: "top 25%",
-    // play on enter, none on leave, reset on enterBack & leaveBack so animation restarts when scrolling back into view
-    toggleActions: "play none reset reset",
-    onLeaveBack: () => {
-      masterTl.progress(0).pause();
-      masterTl.invalidate(); // clear cache so next play runs from clean state
-    },
+    // play on enter once, none on leave — animation runs one time only (no reset when scrolling back)
+    toggleActions: "play none none none",
+    // onLeaveBack: () => {
+    //   masterTl.progress(0).pause();
+    //   masterTl.invalidate(); // clear cache so next play runs from clean state
+    // },
   },
 });
 
