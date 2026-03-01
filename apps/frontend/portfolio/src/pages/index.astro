@@ -1,6 +1,6 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import Navbar from "../components/Navbar.astro";
+import Navbar from "../components/Navbar/Navbar.astro";
 import Hero from "../components/Hero/Hero.astro";
 import Experiences from "../components/Experiences/Experiences.astro";
 import Skills from "../components/Skills/Skills.astro";
@@ -15,12 +15,12 @@ import Counter from "../components/Counter/Counter.astro";
 
 <Layout>
   <Navbar />
-  <Hero />
+  <Hero id="hero" />
+  <Features id="features" />
+  <Skills id="skills" />
   <Counter />
-  <Skills />
-  <Features />
-  <Experiences />
-  <Contact />
+  <Experiences id="experiences" />
+  <Contact id="contact" />
 </Layout>
 
 <Footer />

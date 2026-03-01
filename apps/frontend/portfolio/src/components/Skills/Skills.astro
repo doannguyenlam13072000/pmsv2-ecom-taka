@@ -9,9 +9,15 @@ import {
   otherSkills,
 } from "../../scripts/dummy";
 import TitleHeader from "../TitleHeader/TitleHeader.astro";
+
+interface Props {
+  id?: string;
+}
+const { id } = Astro.props;
 ---
 
 <section
+  id={id}
   class="skills-section container mx-auto space-y-8 bg-card-bg rounded-2xl p-8"
 >
   <TitleHeader title="What I Can Do" sub="💻 My skills" />

@@ -1,3 +1,11 @@
+export const navItems = [
+    { href: "#hero", label: "Home" },
+    { href: "#features", label: "About me" },
+    { href: "#skills", label: "Skills" },
+    { href: "#experiences", label: "Experiences" },
+    { href: "#contact", label: "Contact" },
+];
+
 export const words = [
     { text: "Creative", article: "a", image: "images/creative.svg" },
     { text: "Motivated", article: "a", image: "images/motivated.svg" },

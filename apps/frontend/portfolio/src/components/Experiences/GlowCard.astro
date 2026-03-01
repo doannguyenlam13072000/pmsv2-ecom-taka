@@ -7,7 +7,7 @@ import "./style.css";
   <div class="glow">
     <div class="space-y-4">
       <h2
-        class="text-highlight text-xl md:text-2xl font-semibold text-center border-b-2 border-main pb-4"
+        class="text-main text-xl md:text-2xl font-semibold text-center border-b-2 border-main pb-4"
       >
         {project.company}
       </h2>
@@ -18,9 +18,11 @@ import "./style.css";
           <h2 class="text-headline text-xl md:text-2xl font-semibold">
             {project.title}
           </h2>
-          {project.subtitle && (
-            <p class="text-secondary text-sm mt-0.5">{project.subtitle}</p>
-          )}
+          {
+            project.subtitle && (
+              <p class="text-secondary text-sm mt-0.5">{project.subtitle}</p>
+            )
+          }
         </div>
       </div>
 

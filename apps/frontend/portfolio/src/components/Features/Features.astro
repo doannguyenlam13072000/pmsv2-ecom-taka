@@ -1,8 +1,13 @@
 ---
 import { abilities } from "../../scripts/dummy";
+
+interface Props {
+  id?: string;
+}
+const { id } = Astro.props;
 ---
 
-<section class="features-section container mx-auto">
+<section id={id} class="features-section container mx-auto">
   <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
     {
       abilities.map((ability) => (

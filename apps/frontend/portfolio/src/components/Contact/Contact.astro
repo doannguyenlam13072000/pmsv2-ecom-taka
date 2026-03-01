@@ -2,9 +2,15 @@
 const publicKey = import.meta.env.EMAILJS_PUBLIC_KEY ?? "";
 const serviceId = import.meta.env.EMAILJS_SERVICE_ID ?? "";
 const templateId = import.meta.env.EMAILJS_TEMPLATE_ID ?? "";
+
+interface Props {
+  id?: string;
+}
+const { id } = Astro.props;
 ---
 
 <section
+  id={id}
   class="contact-section container mx-auto max-w-full overflow-x-hidden px-4 sm:px-6 md:px-8"
 >
   <div

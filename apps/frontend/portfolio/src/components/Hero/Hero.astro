@@ -1,12 +1,17 @@
 ---
 import { words } from "../../scripts/dummy";
 import "./style.css";
+
+interface Props {
+  id?: string;
+}
+const { id } = Astro.props;
 ---
 
-<section class="h-screen hero-section">
+<section id={id} class="h-screen hero-section">
   <div class="h-full container mx-auto grid grid-cols-12 gap-4 content-center">
     <!-- Left side -->
-    <div class="col-span-12 md:col-span-6 space-y-4">
+    <div class="col-span-12 gap-8 md:col-span-6 space-y-4 order-2 md:order-1">
       <div class="hero-text flex flex-col gap-4 justify-center">
         <div
           class="title-container border-l-8 border-main pl-4 mx-auto md:mx-0"
@@ -102,7 +107,13 @@ import "./style.css";
     </div>
 
     <!-- Right side -->
-    <div class="col-span-12 md:col-span-6"></div>
+    <div class="col-span-12 md:col-span-6 order-1 md:order-2">
+      <img
+        src="images/hero-banner.svg"
+        alt="hero-image"
+        class="w-full h-full object-cover"
+      />
+    </div>
   </div>
 </section>
 
