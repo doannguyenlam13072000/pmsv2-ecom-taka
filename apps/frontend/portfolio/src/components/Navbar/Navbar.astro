@@ -1,0 +1,106 @@
+---
+import { navItems } from "../../scripts/dummy";
+import "./style.css";
+
+const path = Astro.url.pathname;
+const hash = Astro.url.hash || "";
+
+// Middle links (exclude Contact – that becomes the CTA button)
+const navLinks = navItems.filter((item) => item.href !== "#contact");
+
+function isActive(href: string) {
+  if (path !== "/") return false;
+  if (href === "#hero") return hash === "" || hash === "#hero";
+  return hash === href;
+}
+---
+
+<header class="nav-wrapper">
+  <div class="nav-bar">
+    <button
+      type="button"
+      class="nav-toggle"
+      aria-label="Toggle menu"
+      aria-expanded="false"
+      aria-controls="nav-menu"
+    >
+      <span class="nav-toggle-bar"></span>
+      <span class="nav-toggle-bar"></span>
+      <span class="nav-toggle-bar"></span>
+    </button>
+    <nav class="nav" id="nav-menu" aria-label="Main navigation">
+      <a href="#hero" class="nav-brand">Portfolio</a>
+      <ul class="nav-list">
+        {
+          navLinks.map((item) => (
+            <li>
+              <a
+                href={item.href}
+                class:list={["nav-link", { active: isActive(item.href) }]}
+              >
+                {item.label}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+      <a href="#contact" class="nav-cta">Contact me</a>
+    </nav>
+  </div>
+</header>
+<div class="nav-spacer" aria-hidden="true"></div>
+
+<script>
+  function setActiveNav() {
+    const hash = window.location.hash || "#hero";
+    const links = document.querySelectorAll(".nav-link");
+    links.forEach((link) => {
+      const href = link.getAttribute("href") || "";
+      const isActive = href === hash || (hash === "#hero" && href === "#hero");
+      link.classList.toggle("active", isActive);
+    });
+  }
+
+  function initNav() {
+    const wrapper = document.querySelector(".nav-wrapper");
+    const toggle = document.querySelector(".nav-toggle");
+    const links = document.querySelectorAll(".nav-link");
+    const cta = document.querySelector(".nav-cta");
+
+    function closeMenu() {
+      wrapper?.classList.remove("nav-open");
+      toggle?.setAttribute("aria-expanded", "false");
+      document.body.classList.remove("nav-menu-open");
+    }
+
+    function openMenu() {
+      wrapper?.classList.add("nav-open");
+      toggle?.setAttribute("aria-expanded", "true");
+      document.body.classList.add("nav-menu-open");
+    }
+
+    toggle?.addEventListener("click", () => {
+      const isOpen = wrapper?.classList.contains("nav-open");
+      if (isOpen) closeMenu();
+      else openMenu();
+    });
+
+    links.forEach((link) => {
+      link.addEventListener("click", () => {
+        if (window.matchMedia("(max-width: 767px)").matches) closeMenu();
+      });
+    });
+    cta?.addEventListener("click", () => {
+      if (window.matchMedia("(max-width: 767px)").matches) closeMenu();
+    });
+
+    window.addEventListener("resize", () => {
+      setActiveNav();
+      if (window.matchMedia("(min-width: 768px)").matches) closeMenu();
+    });
+  }
+
+  setActiveNav();
+  window.addEventListener("hashchange", setActiveNav);
+  initNav();
+</script>

@@ -1,0 +1,33 @@
+---
+import Layout from "../../layouts/Layout.astro";
+const title = "About Page";
+const identity = {
+  firstName: "Sarah",
+  country: "Canada",
+  occupation: "Technical Writer",
+  hobbies: ["photography", "birdwatching", "baseball"],
+};
+
+const skills = ["HTML", "CSS", "JavaScript", "React", "Astro", "Writing Docs"];
+
+const happy = true;
+const finished = false;
+const goal = 3;
+---
+
+<Layout>
+  <h1>{title}</h1>
+  <p>
+    My name is {identity.firstName} and I live in {identity.country}. I am a {
+      identity.occupation
+    } and I love {identity.hobbies.join(", ")}.
+  </p>
+
+  <ul>
+    {skills.map((skill) => <li>{skill}</li>)}
+  </ul>
+
+  {happy && <p>I am happy</p>}
+  {finished && <p>I finished</p>}
+  {goal && <p>My goal is {goal}</p>}
+</Layout>
