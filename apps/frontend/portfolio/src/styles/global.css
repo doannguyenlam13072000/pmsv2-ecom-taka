@@ -26,3 +26,9 @@
     --gradient-highlight: var(--gradient-highlight);
     --reflection-color: var(--reflection-color);
 }
+
+@layer components {
+    .hero-badge {
+        @apply bg-card-bg py-2 px-4 rounded-full w-fit text-sm md:text-base text-nowrap
+    }
+}

@@ -1,0 +1,40 @@
+---
+const { project } = Astro.props;
+import "./style.css";
+---
+
+<div class="card card-border timeline-card rounded-xl p-8 bg-card-bg">
+  <div class="glow">
+    <div class="space-y-4">
+      <h2
+        class="text-highlight text-xl md:text-2xl font-semibold text-center border-b-2 border-main pb-4"
+      >
+        {project.company}
+      </h2>
+
+      <div class="flex items-center gap-4">
+        <img class="w-10 h-10" src={project.icon} alt={project.title} />
+        <div>
+          <h2 class="text-headline text-xl md:text-2xl font-semibold">
+            {project.title}
+          </h2>
+          {project.subtitle && (
+            <p class="text-secondary text-sm mt-0.5">{project.subtitle}</p>
+          )}
+        </div>
+      </div>
+
+      <div class="mb-5">
+        <span class="text-secondary italic">Description:</span>
+        <span class="text-headline text-base">{project.description}</span>
+      </div>
+
+      <div>
+        <span class="text-secondary italic">Technologies:</span>
+        <span class="text-headline text-sm">
+          {project.technologies.join(", ")}
+        </span>
+      </div>
+    </div>
+  </div>
+</div>

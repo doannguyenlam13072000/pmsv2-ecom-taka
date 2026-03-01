@@ -21,3 +21,5 @@ const section = document.querySelector(".features-section");
 if (section) {
   observeViewport([section], () => runFeaturesAnimation(), { threshold: 0.2 });
 }
+
+runFeaturesAnimation();

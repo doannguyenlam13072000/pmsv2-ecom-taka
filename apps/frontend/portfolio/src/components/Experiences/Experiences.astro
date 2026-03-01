@@ -1,0 +1,47 @@
+---
+import TitleHeader from "./TitleHeader.astro";
+import GlowCard from "./GlowCard.astro";
+import { projects } from "../../scripts/dummy";
+import "./style.css";
+import Project from "./Project.astro";
+---
+
+<section class="experiences-section container mx-auto md:mt-40 mt-20">
+  <div class="w-full h-full md:px-20 px-5">
+    <TitleHeader
+      title="Professional Work Experience"
+      sub="💼 My career journey so far"
+    />
+  </div>
+
+  <div class="mt-32 relative">
+    <div class="relative z-50 space-y-8">
+      {
+        projects.map((project) => (
+          <div class="exp-card-wrapper grid grid-cols-12">
+            <div class="col-span-5 py-4">
+              <GlowCard project={project} />
+            </div>
+
+            <div class="col-span-1">
+              <div class="timeline-wrapper h-full relative">
+                <img
+                  src={project.companyImage}
+                  alt={project.company}
+                  class="w-8 h-8 absolute -top-10 left-1/2 -translate-x-1/2 z-10"
+                />
+                <div class="gradient-line w-1 h-full absolute top-0 left-1/2 -translate-x-1/2 z-0" />
+              </div>
+            </div>
+
+            <div class="col-span-6 py-4">
+              <Project project={project} />
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<script src="./index.js"></script>
