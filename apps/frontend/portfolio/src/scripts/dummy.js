@@ -237,3 +237,10 @@ export const projects = [
         icon: "images/hr-lotus.svg"
     },
 ]
+
+export const socialLinks = [
+    { name: "LinkedIn", url: "https://www.linkedin.com/in/lam-doan-nguyen/", icon: "images/linkedin.svg" },
+    { name: "GitHub", url: "https://github.com/doannguyenlam13072000", icon: "images/github.svg" },
+    { name: "Facebook", url: "https://www.facebook.com/casbiener/", icon: "images/facebook.svg" },
+    { name: "Instagram", url: "https://www.instagram.com/lamdoannguyen/", icon: "images/instagram.svg" },
+]
