@@ -8,8 +8,10 @@ const pairs = [];
 document.querySelectorAll("[data-end-val]").forEach((el) => {
   const endVal = Number(el.getAttribute("data-end-val"));
   const suffix = el.getAttribute("data-suffix") ?? "";
+  const decimalPlaces = Number(el.getAttribute("data-decimal-places") ?? 0);
   const countUp = new CountUp(el, endVal, {
     suffix,
+    decimalPlaces,
     duration: 2,
   });
   if (!countUp.error) {

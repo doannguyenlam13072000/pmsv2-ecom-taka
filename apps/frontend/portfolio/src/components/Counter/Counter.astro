@@ -20,6 +20,7 @@ const { id } = Astro.props;
                 id={`counter-${i}`}
                 data-end-val={counter.value}
                 data-suffix={counter.suffix ?? ""}
+                data-decimal-places={counter.decimalPlaces ?? 0}
               >
                 0
               </span>
