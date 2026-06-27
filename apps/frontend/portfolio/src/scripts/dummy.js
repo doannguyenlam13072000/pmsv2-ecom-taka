@@ -106,7 +106,7 @@ export const projects = [
         technologies: [
             "React", "TypeScript", "SCSS", "Webpack", "Micro Frontend", "Firebase",
         ],
-        companyImage: "images/sendo.png",
+        companyImage: "images/circle-filled.svg",
         icon: "images/stor-ai.svg"
     },
     {
